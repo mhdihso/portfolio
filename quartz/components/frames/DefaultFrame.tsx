@@ -1,5 +1,6 @@
 import { PageFrame, PageFrameProps } from "./types"
 import HeaderConstructor from "../Header"
+import CareerTimeline from "../CareerTimeline"
 
 const Header = HeaderConstructor()
 
@@ -179,6 +180,7 @@ export const DefaultFrame: PageFrame = {
           </div>
         </div>
         <div class="right sidebar">
+          {componentData.fileData.slug === "index" && <CareerTimeline {...componentData} />}
           {right.map((BodyComponent) => (
             <BodyComponent {...componentData} />
           ))}
