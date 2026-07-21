@@ -4,6 +4,7 @@
 /* A restrained Persian reference: warm paper, lapis teal, and a fine tile-inspired rule. */
 :root {
   --portfolio-rule: linear-gradient(90deg, var(--secondary), var(--tertiary), var(--secondary));
+  --gold: #d7a52d;
 }
 
 article > h1 {
@@ -19,6 +20,28 @@ article > h1::after {
   background: var(--portfolio-rule);
 }
 
+article h2 {
+  position: relative;
+  margin-top: 3rem;
+  padding-bottom: 1.55rem;
+}
+
+/* Muqarnas-inspired stepped facets: an architectural divider, not a generic rule. */
+article h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0.35rem;
+  left: 0;
+  width: min(14rem, 45vw);
+  height: 0.6rem;
+  background:
+    linear-gradient(135deg, transparent 45%, var(--gold) 46% 54%, transparent 55%) 0 0 / 1.2rem
+      0.6rem,
+    linear-gradient(45deg, transparent 45%, var(--secondary) 46% 54%, transparent 55%) 0.6rem 0 /
+      1.2rem 0.6rem;
+  opacity: 0.9;
+}
+
 article a.external {
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -26,6 +49,11 @@ article a.external {
 
 .page > #quartz-body .sidebar.left {
   border-right: 1px solid var(--lightgray);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--secondary) 7%, transparent),
+    transparent 30%
+  );
 }
 
 blockquote {
@@ -40,7 +68,7 @@ blockquote {
   width: 100%;
   margin: 0.5rem 0 2.5rem;
   padding: 0.8rem 0;
-  border-top: 1px solid var(--lightgray);
+  border-top: 1px solid var(--gold);
   border-bottom: 1px solid var(--lightgray);
 }
 
@@ -95,6 +123,128 @@ blockquote {
   font-family: var(--headerFont);
   font-size: 0.95rem;
   white-space: nowrap;
+}
+
+/* Faint generated girih construction: it assembles in the header like a build. */
+.girih-field {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 9rem;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.13;
+}
+
+.girih-field svg {
+  width: 100%;
+  height: 100%;
+}
+.girih-tiles path {
+  fill: none;
+  stroke: var(--secondary);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.4) rotate(-15deg);
+}
+.girih-field.is-ready .girih-tiles path {
+  animation: tile-assemble 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.girih-field.is-ready .girih-tiles path:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.girih-field.is-ready .girih-tiles path:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.girih-field.is-ready .girih-tiles path:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.girih-field.is-ready .girih-tiles path:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.girih-field.is-ready .girih-tiles path:nth-child(6) {
+  animation-delay: 0.5s;
+}
+@keyframes tile-assemble {
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+header {
+  position: relative;
+  overflow: hidden;
+}
+header > .portfolio-nav {
+  position: relative;
+}
+
+/* Pomegranate seed ornament: one quiet organic motif against the geometry. */
+.page-footer::after {
+  content: "❋";
+  display: block;
+  color: var(--tertiary);
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  opacity: 0.75;
+}
+
+/* The experience page becomes a caravanserai route rather than an ordinary list. */
+body[data-slug="experience/index"] article ul {
+  position: relative;
+  list-style: none;
+  margin-left: 0.4rem;
+  padding-left: 2.2rem;
+}
+body[data-slug="experience/index"] article ul::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 0.55rem;
+  width: 2px;
+  background: linear-gradient(var(--gold), var(--secondary), var(--tertiary));
+}
+body[data-slug="experience/index"] article li {
+  position: relative;
+  margin: 1rem 0;
+}
+body[data-slug="experience/index"] article li::before {
+  content: "◆";
+  position: absolute;
+  left: -2.08rem;
+  top: -0.1rem;
+  color: var(--gold);
+  font-size: 1.3rem;
+  text-shadow:
+    0 0 0 var(--secondary),
+    2px 2px 0 var(--light);
+}
+body[data-slug="experience/index"] article li a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 0.25rem;
+  background: color-mix(in srgb, var(--light) 88%, var(--secondary));
+  text-decoration: none;
+}
+
+body[data-slug="about/bio"] article img[alt*="scribe"],
+body[data-slug="about/bio"] article img[alt*="woven"] {
+  display: block;
+  width: 100%;
+  margin: 1.5rem auto 2.5rem;
+  border: 1px solid var(--gold);
+  box-shadow: 10px 10px 0 color-mix(in srgb, var(--secondary) 25%, transparent);
+}
+
+body[data-slug="connect/index"] article img[alt^="Simorgh"] {
+  display: block;
+  width: min(18rem, 70%);
+  margin: 1.5rem auto;
 }
 
 @media all and (max-width: 600px) {

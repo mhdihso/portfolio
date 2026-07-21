@@ -15,7 +15,10 @@ const PortfolioNav: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
   return (
     <nav class="portfolio-nav" aria-label="Primary navigation">
       <div class="portfolio-mark" aria-hidden="true">
-        <i></i><i></i><i></i><i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
       </div>
       <div class="portfolio-nav-links">
         {links.map((link, index) => (

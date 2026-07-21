@@ -11,14 +11,18 @@ I am Seyedmahdi Hosseini, a backend-oriented Computer Science master's student b
 
 My experience includes designing backend services with Python and Django, building REST APIs, improving database performance, and supporting production-facing web applications and data workflows.
 
+![A Persian miniature-inspired illustration of a scribe-engineer designing a data system.](../media/images/persian-scribe-hero.png)
+
 ## Technical toolkit
 
-| Area | Tools and experience |
-| --- | --- |
-| Languages | Python, Java, JavaScript, SQL |
-| Backend | Django, FastAPI, REST APIs |
-| Data | PostgreSQL, MongoDB, Redis, relational databases, query optimisation |
-| Delivery | Docker, Linux, Git, containerised workflows |
+![Technical skills rendered as a woven rug pattern.](../media/images/skill-rug.svg)
+
+| Area            | Tools and experience                                                      |
+| --------------- | ------------------------------------------------------------------------- |
+| Languages       | Python, Java, JavaScript, SQL                                             |
+| Backend         | Django, FastAPI, REST APIs                                                |
+| Data            | PostgreSQL, MongoDB, Redis, relational databases, query optimisation      |
+| Delivery        | Docker, Linux, Git, containerised workflows                               |
 | Applied systems | Data validation, AI data pipelines, internal web applications, OutSystems |
 
 ## Education

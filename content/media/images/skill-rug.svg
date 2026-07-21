@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" role="img" aria-labelledby="title desc">
+  <title id="title">Technical skills as a woven Persian rug</title><desc id="desc">A turquoise, terracotta, and gold geometric rug showing skills in its woven knots.</desc>
+  <defs><pattern id="weave" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 9h18M9 0v18" stroke="#f6e7c8" stroke-opacity=".18" stroke-width="2"/></pattern></defs>
+  <rect width="900" height="330" rx="12" fill="#0c5661"/><rect x="16" y="16" width="868" height="298" rx="5" fill="#ca7442"/><rect x="32" y="32" width="836" height="266" fill="#0c5661"/><rect x="45" y="45" width="810" height="240" fill="url(#weave)"/>
+  <g fill="#e5b94f" stroke="#f6e7c8" stroke-width="2">
+    <path d="M92 84l28-28 28 28-28 28zM212 84l28-28 28 28-28 28zM332 84l28-28 28 28-28 28zM452 84l28-28 28 28-28 28zM572 84l28-28 28 28-28 28zM692 84l28-28 28 28-28 28z"/>
+    <path d="M152 178l28-28 28 28-28 28zM272 178l28-28 28 28-28 28zM392 178l28-28 28 28-28 28zM512 178l28-28 28 28-28 28zM632 178l28-28 28 28-28 28z"/>
+  </g>
+  <g fill="#f7ead0" font-family="Georgia, serif" font-size="18" font-weight="bold" text-anchor="middle"><text x="120" y="130">Python</text><text x="240" y="130">Django</text><text x="360" y="130">FastAPI</text><text x="480" y="130">SQL</text><text x="600" y="130">Docker</text><text x="720" y="130">Git</text><text x="180" y="224">PostgreSQL</text><text x="300" y="224">MongoDB</text><text x="420" y="224">Redis</text><text x="540" y="224">JavaScript</text><text x="660" y="224">Linux</text></g>
+  <text x="450" y="275" fill="#f7ead0" font-family="Georgia, serif" font-size="15" text-anchor="middle" letter-spacing="4">SYSTEMS · DATA · CRAFT</text>
+</svg>
