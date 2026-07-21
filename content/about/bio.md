@@ -1,29 +1,30 @@
 ---
-title: Bio & Engineering Profile
-description: Technical background, domain specializations, education, and credentials of Mehdi Hosseini.
+title: Bio & Profile
+description: Background, skills, education, and technical profile of Mehdi Hosseini.
 tags:
   - about
 ---
 
 ## Profile Summary
 
-I am **Mehdi Hosseini**, a backend and systems-focused Computer Science Master's student at the **University of Tübingen** in Germany. 
+I am **Mehdi Hosseini**, a backend-oriented Computer Science Master's student based in Tübingen, Germany. 
 
-My engineering focus centers on **dependable data engines, high-throughput backend services, and query performance optimization**. I am particularly interested in the intersection of application software and database engine internals — ensuring systems remain performant, verifiable, and resilient under scale.
+I have practical experience developing and maintaining **backend services, REST APIs, and SQL-based database systems**. My background combines several years as a backend developer working with **Python, Django, FastAPI, PostgreSQL, MongoDB, and Redis**, alongside hands-on enterprise experience at **Robert Bosch GmbH** working on SQL databases, data pipelines, and internal web applications in a production environment.
 
-Currently, I work as a **Working Student at Robert Bosch GmbH** (Mobility Electronics Quality), where I engineer internal web applications and SQL validation pipelines for automotive quality and risk analytics.
+My core technical focus includes **clean, testable code, database query optimization, and event-driven architectures**.
 
 ---
 
-## Technical Toolkit & Specializations
+## Technical Toolkit
 
-| Specialization Domain | Engineering Competencies & Stack |
+| Category | Tools and Experience |
 | :--- | :--- |
-| **Relational Engines & Query Engineering** | PostgreSQL, DuckDB internals, Recursive CTE optimization, SQL query execution plan analysis, B-tree/GIN index tuning, analytical data pipelines |
-| **Distributed Systems & Backend Services** | Python (Django, FastAPI), Java, RESTful API design, Redis caching strategies, Celery async task workers, Microservices, Event-driven flows |
-| **Infrastructure & Delivery** | Docker, Linux server administration, Git, CI/CD container workflows, System monitoring, OutSystems low-code enterprise tools |
-| **Security & Data Integrity** | Financial data validation, Role-Based Access Control (RBAC), JWT authentication, Auditability logging, System verification |
-| **Applied AI & Search Systems** | Information retrieval architectures, Hybrid search (BM25 + Dense vector embeddings), pgvector, Document processing workflows |
+| **Programming Languages** | Python, Java, JavaScript, SQL |
+| **Backend & Frameworks** | Django, FastAPI, RESTful APIs, Clean & Testable Code |
+| **Databases** | PostgreSQL, MongoDB, Redis, Relational Databases, Query Optimization |
+| **DevOps & Infrastructure** | Docker, Linux, Git, Containerized Workflows |
+| **Data & AI Systems** | AI-related Data Pipelines, Data Validation Workflows, Backend Data Processing |
+| **Enterprise & Web** | Low-Code Platforms (OutSystems), Internal Enterprise Web Applications |
 
 ---
 
@@ -31,13 +32,13 @@ Currently, I work as a **Working Student at Robert Bosch GmbH** (Mobility Electr
 
 ### M.Sc. Computer Science · University of Tübingen
 **2025 - Present · Tübingen, Germany**  
-- **Specialization:** Scalable Data Systems, Database Engine Internals, Applied AI & Search Architectures, Distributed Software Systems.
-- **Seminar Research:** Recursive Query Features and Execution Optimization in DuckDB.
+- **Focus Areas:** Scalable Backend Systems, Databases, AI Systems, and Software Engineering.
+- **Seminar Work:** Research into recursive query features, execution models, and performance characteristics in DuckDB.
 
 ### B.Sc. Computer Science · University of Zanjan
-**2020 - 2024 · Zanjan, Iran**  
-- Core CS foundation: Data Structures & Algorithms, Operating Systems, Database Management Systems, Computer Networks.
-- **Teaching Assistant (3 Years):** Tutor for Advanced Programming (Java & Python) and Data Structures courses, mentoring 120+ undergraduate students in code design, debugging, and algorithmic efficiency.
+**Completed 2024 · Zanjan, Iran**  
+- Core Computer Science foundation: Data Structures, Algorithms, Operating Systems, Database Management Systems.
+- **Student Tutor (3 Years):** Student assistant and tutor for advanced programming courses.
 
 ---
 
@@ -49,8 +50,8 @@ Currently, I work as a **Working Student at Robert Bosch GmbH** (Mobility Electr
 
 ---
 
-## Professional Links & Verification
+## Professional Links & Details
 
-- **Work Experience Detail:** [[experience/index|View Detailed Experience Timeline →]]
-- **Academic Research:** [[projects/duckdb-recursive-features|View DuckDB Research →]]
-- **Direct Contact:** [[connect/index|Get in Touch / Download CV →]]
+- **Detailed Experience:** [[experience/index|View Experience Timeline →]]
+- **DuckDB Seminar Research:** [[projects/duckdb-recursive-features|View DuckDB Research →]]
+- **Contact & CV:** [[connect/index|Get in Touch / Download CV →]]

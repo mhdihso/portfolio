@@ -1,40 +1,41 @@
 ---
 title: Mehdi Hosseini
-description: Security-Focused Backend & Systems Engineer specializing in dependable data engines, high-throughput backend services, and applied AI search architectures.
+description: Backend & Database Systems Engineer and Computer Science master's student focused on scalable backend services, SQL databases, and query optimization.
 ---
 
 <div class="profile-hero">
   <img src="static/mehdi.jpg" alt="Mehdi Hosseini" class="profile-avatar" />
   <div class="profile-intro">
-    <div class="hero-headline">Security-Focused Backend & Systems Engineer</div>
-    <p>I build dependable data engines, high-throughput backend services, and applied AI systems. Currently pursuing my <strong>M.Sc. in Computer Science at the University of Tübingen</strong> and engineering internal quality & risk analytics platforms at <strong>Robert Bosch GmbH</strong>.</p>
+    <div class="hero-headline">Backend & Database Systems Engineer</div>
+    <p>I am a backend-oriented Computer Science Master's student at the <strong>University of Tübingen</strong> with hands-on experience developing backend services, REST APIs, and SQL database pipelines. Currently working as a Werkstudent at <strong>Robert Bosch GmbH</strong> (Mobility Electronics Quality) on internal web applications and data processing workflows.</p>
     <div class="credential-bar">
       <span class="cred-badge">🏢 Robert Bosch GmbH</span>
       <span class="cred-badge">🏛️ Deutsche Bundesbank</span>
       <span class="cred-badge">🎓 Univ. of Tübingen</span>
-      <span class="cred-badge status-open">🟢 Open for Systems & Backend Roles</span>
+      <span class="cred-badge status-open">🟢 Open for Backend & Data Roles</span>
     </div>
   </div>
 </div>
 
 ---
 
-## High-Value Technical Competencies
+## Technical Toolkit & Experience Domains
 
-| Domain | Core Specializations & Tools |
+| Area | Technologies & Experience |
 | :--- | :--- |
-| **Relational Engines & Query Engineering** | PostgreSQL, DuckDB Internals, Recursive CTEs, Query Execution Plans, Schema Indexing & Tuning, Complex SQL |
-| **Distributed Systems & Microservices** | Python, Django, FastAPI, Java, REST API Design, Redis Caching, Celery Async Queues, Docker, Linux |
-| **Data Integrity & Security** | Data Validation Workflows, Role-Based Access Control (RBAC), JWT Auth, Financial & Quality Data Auditing |
-| **Applied AI & Search Engineering** | Information Retrieval, Hybrid Search (BM25 + Dense Vectors), Vector Storage (pgvector), Data Pipelines |
+| **Languages & Core** | Python, Java, JavaScript, SQL, Clean & Testable Code |
+| **Backend & Frameworks** | Django, FastAPI, RESTful APIs, Event-Driven Architecture Interest |
+| **Databases & Optimization** | PostgreSQL, MongoDB, Redis, Relational Databases, Query Performance Optimization, Schema Tuning |
+| **DevOps & Infrastructure** | Docker, Linux Server Workflows, Git, Containerized Deployments |
+| **Data & AI Systems** | AI-related Data Pipelines, Data Validation, Backend Data Processing, OutSystems (Low-Code) |
 
 ---
 
 ## Explore & Navigation
 
-- [[about/bio|Bio & Engineering Profile]] - background, technical toolkit, education, and languages.
-- [[experience/index|Experience & Work]] - roles at Robert Bosch GmbH, Deutsche Bundesbank, and startups.
-- [[projects/duckdb-recursive-features|DuckDB Research]] - recursive query engine optimization & execution plans.
-- [[projects/ai-search-systems|AI & Search Systems]] - hybrid BM25 + dense vector retrieval architectures.
-- [[blog/index|Blog]] - technical writing on database internals, SQL, and backend design.
-- [[connect/index|Connect]] - 1-click contact actions, downloadable CV, and availability.
+- [[about/bio|Bio & Profile]] - technical background, skills, education, and languages.
+- [[experience/index|Work Experience]] - roles at Robert Bosch GmbH, Deutsche Bundesbank, and NoyanFanavarArya.
+- [[projects/duckdb-recursive-features|DuckDB Research]] - recursive query features and execution performance in DuckDB.
+- [[projects/ai-search-systems|AI & Search Systems]] - information retrieval, ranking, and scalable search architectures.
+- [[blog/index|Blog]] - writing on backend engineering, databases, and system analysis.
+- [[connect/index|Connect]] - direct contact, CV download, and availability.

@@ -102,7 +102,7 @@ export default (() => {
               "@type": "Person",
               "name": "Mehdi Hosseini",
               "url": `https://${cfg.baseUrl ?? "mhdihso.github.io"}`,
-              "jobTitle": "Security-Focused Backend & Systems Engineer",
+              "jobTitle": "Backend & Database Systems Engineer",
               "worksFor": {
                 "@type": "Organization",
                 "name": "Robert Bosch GmbH",

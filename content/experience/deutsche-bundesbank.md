@@ -1,39 +1,18 @@
 ---
 title: Deutsche Bundesbank
-description: IT internship focused on internal systems, SQL validation workflows, monetary policy data processes, and testing.
+description: IT internship focused on internal systems, SQL validation workflows, monetary policy applications, and database-oriented system analysis.
 date: 2025-01-01
 tags: [experience, sql, data-validation, bundesbank]
 ---
 
-## IT Intern — System & Project Management
+## IT-Praktikant — System- & Projektmanagement
 
-**Deutsche Bundesbank · Jan 2025 - Mar 2025 · Hannover, Germany**
+**Deutsche Bundesbank · 2025 · Hannover, Germany**
 
-### Overview & Impact
-Contributed to IT system maintenance, relational data validation, and testing procedures within the monetary-policy and financial data systems environment. High-security, audit-heavy domain requiring strict data verification protocols and zero tolerance for data anomalies.
+### Responsibilities & Focus
+- Supported internal IT systems, **SQL-based validation workflows**, and internal testing processes.
+- Contributed to data validation and procedural support for IT applications in the area of **monetary policy (Geldpolitik)**.
+- Worked with structured data processes and **database-oriented system analysis**.
 
-```
-┌─────────────────────────────────┐
-│ Monetary Policy Data Sources    │
-└─────────────────────────────────┘
-                 │
-                 ▼
-┌─────────────────────────────────┐
-│ SQL Integrity & Auditability    │
-│ Verification Pipeline           │
-└─────────────────────────────────┘
-                 │
-                 ▼
-┌─────────────────────────────────┐
-│ Internal Financial Reporting &  │
-│ System Testing Environment      │
-└─────────────────────────────────┘
-```
-
-### Key Responsibilities & Achievements
-- **SQL Audit & Validation Workflows:** Developed and executed complex SQL queries to validate transactional and analytical dataset consistency across internal central banking applications.
-- **System Analysis & Verification:** Conducted procedural testing and data analysis for financial IT workflows, ensuring compliance with strict European banking data standards.
-- **Cross-Functional IT Support:** Collaborated with senior IT project managers to refine internal system documentation, database schemas, and regression test suites.
-
-### Technical Stack
-`SQL` · `Relational Databases` · `Data Validation` · `System Testing` · `Process Analysis` · `Financial IT Infrastructure`
+### Tools & Stack
+`SQL` · `Data Validation` · `System Analysis` · `Internal IT Systems` · `Structured Data Processes`
