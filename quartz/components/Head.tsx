@@ -94,6 +94,47 @@ export default (() => {
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Mehdi Hosseini",
+              "url": `https://${cfg.baseUrl ?? "mhdihso.github.io"}`,
+              "jobTitle": "Security-Focused Backend & Systems Engineer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Robert Bosch GmbH",
+              },
+              "alumniOf": [
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "University of Tübingen",
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "University of Zanjan",
+                },
+              ],
+              "sameAs": [
+                "https://github.com/mhdihso",
+                "https://www.linkedin.com/in/mehdi-hoseyni",
+              ],
+              "knowsAbout": [
+                "Database Engine Internals",
+                "Query Optimization",
+                "DuckDB",
+                "PostgreSQL",
+                "Python",
+                "Django",
+                "FastAPI",
+                "Distributed Systems",
+                "Information Retrieval",
+              ],
+            }),
+          }}
+        />
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js

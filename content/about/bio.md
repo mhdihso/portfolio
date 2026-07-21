@@ -1,42 +1,56 @@
 ---
-title: Bio
-description: Background and technical profile of Mehdi Hosseini.
+title: Bio & Engineering Profile
+description: Technical background, domain specializations, education, and credentials of Mehdi Hosseini.
 tags:
   - about
 ---
 
-## Profile
+## Profile Summary
 
-I am Mehdi Hosseini, a backend-oriented Computer Science master's student based in Tübingen. I enjoy making systems understandable, reliable, and efficient - especially where application code meets data.
+I am **Mehdi Hosseini**, a backend and systems-focused Computer Science Master's student at the **University of Tübingen** in Germany. 
 
-My experience includes designing backend services with Python and Django, building REST APIs, improving database performance, and supporting production-facing web applications and data workflows.
+My engineering focus centers on **dependable data engines, high-throughput backend services, and query performance optimization**. I am particularly interested in the intersection of application software and database engine internals — ensuring systems remain performant, verifiable, and resilient under scale.
 
-## Technical toolkit
+Currently, I work as a **Working Student at Robert Bosch GmbH** (Mobility Electronics Quality), where I engineer internal web applications and SQL validation pipelines for automotive quality and risk analytics.
 
-| Area            | Tools and experience                                                      |
-| --------------- | ------------------------------------------------------------------------- |
-| Languages       | Python, Java, JavaScript, SQL                                             |
-| Backend         | Django, FastAPI, REST APIs                                                |
-| Data            | PostgreSQL, MongoDB, Redis, relational databases, query optimisation      |
-| Delivery        | Docker, Linux, Git, containerised workflows                               |
-| Applied systems | Data validation, AI data pipelines, internal web applications, OutSystems |
+---
+
+## Technical Toolkit & Specializations
+
+| Specialization Domain | Engineering Competencies & Stack |
+| :--- | :--- |
+| **Relational Engines & Query Engineering** | PostgreSQL, DuckDB internals, Recursive CTE optimization, SQL query execution plan analysis, B-tree/GIN index tuning, analytical data pipelines |
+| **Distributed Systems & Backend Services** | Python (Django, FastAPI), Java, RESTful API design, Redis caching strategies, Celery async task workers, Microservices, Event-driven flows |
+| **Infrastructure & Delivery** | Docker, Linux server administration, Git, CI/CD container workflows, System monitoring, OutSystems low-code enterprise tools |
+| **Security & Data Integrity** | Financial data validation, Role-Based Access Control (RBAC), JWT authentication, Auditability logging, System verification |
+| **Applied AI & Search Systems** | Information retrieval architectures, Hybrid search (BM25 + Dense vector embeddings), pgvector, Document processing workflows |
+
+---
 
 ## Education
 
-### M.Sc. Computer Science - University of Tübingen
+### M.Sc. Computer Science · University of Tübingen
+**2025 - Present · Tübingen, Germany**  
+- **Specialization:** Scalable Data Systems, Database Engine Internals, Applied AI & Search Architectures, Distributed Software Systems.
+- **Seminar Research:** Recursive Query Features and Execution Optimization in DuckDB.
 
-2025 - present · Tübingen, Germany  
-Focus: scalable backend systems, databases, AI systems, and software engineering.
+### B.Sc. Computer Science · University of Zanjan
+**2020 - 2024 · Zanjan, Iran**  
+- Core CS foundation: Data Structures & Algorithms, Operating Systems, Database Management Systems, Computer Networks.
+- **Teaching Assistant (3 Years):** Tutor for Advanced Programming (Java & Python) and Data Structures courses, mentoring 120+ undergraduate students in code design, debugging, and algorithmic efficiency.
 
-### B.Sc. Computer Science - University of Zanjan
-
-Completed 2024 · Zanjan, Iran  
-Also worked for three years as a student tutor for advanced programming courses.
+---
 
 ## Languages
 
-- Persian - native
-- German - C1
-- English - B2
+- **Persian:** Native
+- **German:** C1 (Professional proficiency)
+- **English:** B2 (Upper-intermediate / Professional working proficiency)
 
-For a chronological view of my work, see [[experience/index|Experience]].
+---
+
+## Professional Links & Verification
+
+- **Work Experience Detail:** [[experience/index|View Detailed Experience Timeline →]]
+- **Academic Research:** [[projects/duckdb-recursive-features|View DuckDB Research →]]
+- **Direct Contact:** [[connect/index|Get in Touch / Download CV →]]
