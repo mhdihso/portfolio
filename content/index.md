@@ -1,14 +1,14 @@
 ---
-title: Seyedmahdi Hosseini
+title: Mehdi Hosseini
 description: Backend engineer and computer science master's student focused on dependable data systems.
 ---
 
-> هرگز نمیرد آن که دلش زنده شد به عشق  
-> ثبت است بر جریدهٔ عالم دوام ما
->
-> _“He whose heart lives through love never dies; our permanence is written in the record of the world.”_ — Hafez
-
-I am a backend-oriented Computer Science master's student in Tübingen, Germany. I build dependable services and data systems, with particular interest in databases, query performance, and applied AI systems.
+<div class="profile-hero">
+  <img src="static/mehdi.jpg" alt="Mehdi Hosseini" class="profile-avatar" />
+  <div class="profile-intro">
+    <p>I am a backend-oriented Computer Science master's student in Tübingen, Germany. I build dependable services and data systems, with particular interest in databases, query performance, and applied AI systems.</p>
+  </div>
+</div>
 
 My work spans Python and Django services, REST APIs, PostgreSQL, MongoDB, Redis, SQL data pipelines, and production-facing internal web applications. This site follows one idea: like girih tilework, durable systems emerge from a small, coherent set of rules.
 

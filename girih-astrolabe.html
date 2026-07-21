@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Girih &amp; Astrolabe — building blocks</title>
+<style>
+  :root{
+    --ink:#12181c;
+    --panel:#171f24;
+    --lapis:#1c5d70;
+    --turquoise:#3fa9a0;
+    --turquoise-bright:#6fd8c9;
+    --gold:#d1a24a;
+    --terracotta:#c2683f;
+    --cream:#ece3d0;
+    --line: rgba(236,227,208,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--ink);color:var(--cream);
+    font-family: 'Georgia', 'Iowan Old Style', serif;}
+  .wrap{max-width:1100px;margin:0 auto;padding:56px 28px 90px;}
+  h1{
+    font-family: Georgia, serif;
+    font-weight:400;
+    font-size:2.4rem;
+    letter-spacing:.5px;
+    margin:0 0 6px;
+    color:var(--cream);
+  }
+  .sub{color:var(--turquoise-bright);font-size:.95rem;letter-spacing:.12em;
+    text-transform:uppercase;margin:0 0 40px;font-family:'Trebuchet MS',sans-serif;}
+  section{margin-bottom:64px;}
+  .cardhead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:20px;}
+  .cardhead h2{font-weight:400;font-size:1.3rem;margin:0;color:var(--gold);}
+  .cardhead .note{font-size:.8rem;color:#a9b3ac;font-family:'Trebuchet MS',sans-serif;
+    text-align:right;max-width:340px;}
+  .stage{
+    position:relative;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(63,169,160,0.10), transparent 55%),
+      var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  #girihStage{height:420px;}
+  #girihStage svg{display:block;width:100%;height:100%;}
+  .strap{fill:none;stroke:var(--turquoise);stroke-width:1.1;opacity:.55;
+    stroke-linecap:round;}
+  .starline{fill:none;stroke:var(--gold);stroke-width:1.4;
+    stroke-linecap:round; stroke-linejoin:round;}
+  .accentstar .starline{stroke:var(--terracotta);stroke-width:1.6;}
+  .controls{display:flex;gap:10px;margin-top:16px;font-family:'Trebuchet MS',sans-serif;}
+  button{
+    background:transparent;color:var(--cream);border:1px solid var(--line);
+    padding:8px 16px;border-radius:2px;cursor:pointer;font-size:.8rem;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  button:hover{border-color:var(--turquoise-bright);color:var(--turquoise-bright);}
+
+  #astroStage{
+    height:420px;display:flex;align-items:center;justify-content:center;
+    gap:60px;flex-wrap:wrap;
+  }
+  .astro-caption{max-width:280px;font-family:'Trebuchet MS',sans-serif;
+    font-size:.85rem;line-height:1.6;color:#c7ccc4;}
+  .astro-caption b{color:var(--turquoise-bright);font-weight:600;}
+
+  footer{color:#7c857e;font-size:.78rem;font-family:'Trebuchet MS',sans-serif;
+    border-top:1px solid var(--line);padding-top:18px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Girih &amp; Astrolabe</h1>
+  <p class="sub">generative building blocks · turquoise, gold, terracotta</p>
+
+  <section>
+    <div class="cardhead">
+      <h2>1 · Girih tiling — page background generator</h2>
+      <div class="note">A hexagonal lattice of 10‑point star knots and connecting straps, drawn as SVG and animated in like a build compiling, tile by tile.</div>
+    </div>
+    <div class="stage" id="girihStage"></div>
+    <div class="controls">
+      <button id="replay">Replay build‑in</button>
+      <button id="denser">Denser lattice</button>
+      <button id="sparser">Sparser lattice</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="cardhead">
+      <h2>2 · Astrolabe — loading spinner</h2>
+      <div class="note">Concentric rings + graduated limb + rotating rete, in place of a generic spinner.</div>
+    </div>
+    <div class="stage" id="astroStage">
+      <svg id="astrolabe" viewBox="0 0 240 240" width="220" height="220"></svg>
+      <div class="astro-caption">
+        Three independent layers: the <b>limb</b> (outer ring, fixed, tick‑marked
+        in 5° steps), the <b>mater</b> (middle ring, static), and the
+        <b>rete</b> (star pattern, rotates continuously) — mirroring how a real
+        astrolabe's star‑map plate turns above its fixed base. Drop this in as
+        a favicon‑scale mark or a full loading state.
+      </div>
+    </div>
+  </section>
+
+  <footer>Both pieces are plain SVG + CSS + a small JS generator — no image assets, no libraries. Copy the two &lt;script&gt; blocks directly into a site.</footer>
+</div>
+
+<script>
+/* ============ GIRIH LATTICE GENERATOR ============ */
+(function(){
+  const stage = document.getElementById('girihStage');
+  let density = 64; // spacing between star centers
+
+  function starPoints(cx, cy, rOuter, rInner, n){
+    const pts = [];
+    for(let i=0;i<n*2;i++){
+      const r = (i%2===0)? rOuter : rInner;
+      const a = (Math.PI/n)*i - Math.PI/2;
+      pts.push([cx + r*Math.cos(a), cy + r*Math.sin(a)]);
+    }
+    return pts;
+  }
+  function pathFromPoints(pts){
+    return 'M ' + pts.map(p=>p[0].toFixed(2)+','+p[1].toFixed(2)).join(' L ') + ' Z';
+  }
+
+  function build(){
+    stage.innerHTML = '';
+    const w = stage.clientWidth, h = stage.clientHeight;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+    const rOuter = density*0.42, rInner = rOuter*0.42;
+    const colStep = density;
+    const rowStep = density*0.87;
+
+    // build triangular lattice of star centers
+    const centers = [];
+    let row=0;
+    for(let y=-rowStep; y<h+rowStep; y+=rowStep){
+      const offset = (row%2===0)? 0 : colStep/2;
+      for(let x=-colStep+offset; x<w+colStep; x+=colStep){
+        centers.push([x,y]);
+      }
+      row++;
+    }
+
+    // connecting straps: link centers within colStep*1.05 distance
+    const strapsGroup = document.createElementNS('http://www.w3.org/2000/svg','g');
+    const starsGroup = document.createElementNS('http://www.w3.org/2000/svg','g');
+    svg.appendChild(strapsGroup);
+    svg.appendChild(starsGroup);
+
+    let delayIndex = 0;
+    const cx0 = w/2, cy0 = h/2;
+
+    centers.forEach(([x,y])=>{
+      for(const [x2,y2] of centers){
+        const d = Math.hypot(x2-x, y2-y);
+        if(d > 1 && d < colStep*1.05){
+          const line = document.createElementNS('http://www.w3.org/2000/svg','path');
+          const mx=(x+x2)/2, my=(y+y2)/2;
+          const dx=x2-x, dy=y2-y;
+          const nx=-dy/d, ny=dx/d;
+          const bow = 6;
+          const p1=[x + dx*0.32, y + dy*0.32];
+          const p2=[mx + nx*bow, my + ny*bow];
+          const p3=[x + dx*0.68, y + dy*0.68];
+          const p4=[mx - nx*bow, my - ny*bow];
+          line.setAttribute('d', `M${p1[0]},${p1[1]} Q${p2[0]},${p2[1]} ${p3[0]},${p3[1]} Q${p4[0]},${p4[1]} ${p1[0]},${p1[1]}`);
+          line.setAttribute('class','strap');
+          strapsGroup.appendChild(line);
+        }
+      }
+    });
+
+    centers.forEach(([x,y], i)=>{
+      if(x < -rOuter || x > w+rOuter || y < -rOuter || y > h+rOuter) return;
+      const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+      const isAccent = (i % 11 === 0);
+      g.setAttribute('class', isAccent ? 'accentstar' : '');
+      const pts = starPoints(x,y,rOuter,rInner,10);
+      const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+      p.setAttribute('d', pathFromPoints(pts));
+      p.setAttribute('class','starline');
+      g.appendChild(p);
+
+      // inner decagon ring for the "knot" reading
+      const inner = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      inner.setAttribute('cx',x); inner.setAttribute('cy',y);
+      inner.setAttribute('r', rInner*0.9);
+      inner.setAttribute('class','strap');
+      g.appendChild(inner);
+
+      starsGroup.appendChild(g);
+
+      // build-in animation: stagger by distance from center
+      const dist = Math.hypot(x-cx0, y-cy0);
+      g.style.opacity = 0;
+      g.style.transform = 'scale(0.4)';
+      g.style.transformOrigin = `${x}px ${y}px`;
+      g.style.transition = 'opacity .5s ease, transform .5s cubic-bezier(.2,.8,.3,1)';
+      setTimeout(()=>{
+        g.style.opacity = 1;
+        g.style.transform = 'scale(1)';
+      }, 30 + dist*1.1);
+    });
+
+    strapsGroup.style.opacity = 0;
+    strapsGroup.style.transition = 'opacity 1.2s ease 400ms';
+    setTimeout(()=>{ strapsGroup.style.opacity = 1; }, 50);
+
+    stage.appendChild(svg);
+  }
+
+  build();
+  document.getElementById('replay').onclick = build;
+  document.getElementById('denser').onclick = ()=>{ density = Math.max(36, density-10); build(); };
+  document.getElementById('sparser').onclick = ()=>{ density = Math.min(110, density+10); build(); };
+  window.addEventListener('resize', build);
+})();
+
+/* ============ ASTROLABE LOADER GENERATOR ============ */
+(function(){
+  const svg = document.getElementById('astrolabe');
+  const NS = 'http://www.w3.org/2000/svg';
+  const cx=120, cy=120;
+
+  function el(tag, attrs){
+    const e = document.createElementNS(NS, tag);
+    for(const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // limb: outer fixed ring with ticks
+  const limb = el('circle', {cx,cy,r:108, fill:'none', stroke:'#d1a24a', 'stroke-width':2});
+  svg.appendChild(limb);
+
+  const ticks = el('g', {stroke:'#d1a24a', 'stroke-width':1, opacity:.75});
+  for(let deg=0; deg<360; deg+=5){
+    const a = deg*Math.PI/180;
+    const len = (deg % 30 === 0) ? 10 : 5;
+    const r1 = 108, r2 = 108-len;
+    ticks.appendChild(el('line', {
+      x1:(cx+r1*Math.cos(a)).toFixed(2), y1:(cy+r1*Math.sin(a)).toFixed(2),
+      x2:(cx+r2*Math.cos(a)).toFixed(2), y2:(cy+r2*Math.sin(a)).toFixed(2)
+    }));
+  }
+  svg.appendChild(ticks);
+
+  // mater: static middle ring
+  svg.appendChild(el('circle', {cx,cy,r:86, fill:'none', stroke:'#3fa9a0', 'stroke-width':1, opacity:.6}));
+  svg.appendChild(el('circle', {cx,cy,r:64, fill:'none', stroke:'#3fa9a0', 'stroke-width':1, opacity:.4}));
+
+  // rete: rotating star map layer
+  const rete = el('g', {id:'rete'});
+  // 7-point star skeleton, classic rete silhouette suggestion
+  const pts = [];
+  const n = 7, rOuter=78, rInner=30;
+  for(let i=0;i<n*2;i++){
+    const r = (i%2===0)? rOuter : rInner;
+    const a = (Math.PI/n)*i - Math.PI/2;
+    pts.push(`${(cx+r*Math.cos(a)).toFixed(2)},${(cy+r*Math.sin(a)).toFixed(2)}`);
+  }
+  rete.appendChild(el('polygon', {points: pts.join(' '), fill:'none', stroke:'#c2683f', 'stroke-width':1.4}));
+  // pointers (star markers) at each outer vertex
+  for(let i=0;i<n*2;i+=2){
+    const a = (Math.PI/n)*i - Math.PI/2;
+    const px = cx+rOuter*Math.cos(a), py = cy+rOuter*Math.sin(a);
+    rete.appendChild(el('circle', {cx:px.toFixed(2), cy:py.toFixed(2), r:2.4, fill:'#6fd8c9'}));
+  }
+  rete.appendChild(el('circle', {cx, cy, r:3, fill:'#d1a24a'}));
+  // alidade-like long axis line
+  rete.appendChild(el('line', {x1:cx, y1:cy-96, x2:cx, y2:cy+96, stroke:'#6fd8c9', 'stroke-width':1, opacity:.5}));
+  svg.appendChild(rete);
+
+  rete.style.transformOrigin = `${cx}px ${cy}px`;
+  rete.style.animation = 'spin 9s linear infinite';
+  const styleTag = document.createElement('style');
+  styleTag.textContent = `@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`;
+  document.head.appendChild(styleTag);
+})();
+</script>
+</body>
+</html>

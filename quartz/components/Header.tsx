@@ -33,13 +33,14 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 1rem 0;
+  justify-content: space-between;
+  margin: 1rem 0 0.5rem;
   gap: 1rem;
+  width: 100%;
 }
 
 header h1 {
   margin: 0;
-  flex: auto;
 }
 `
 

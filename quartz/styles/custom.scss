@@ -1,45 +1,285 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
-/* A restrained Persian reference: warm paper, lapis teal, and a fine tile-inspired rule. */
+// Design system tokens
 :root {
-  --portfolio-rule: linear-gradient(90deg, var(--secondary), var(--tertiary), var(--secondary));
+  --portfolio-rule: linear-gradient(90deg, var(--secondary), var(--gold), var(--secondary));
   --gold: #d7a52d;
+  --terracotta: #ec8a50;
+  --lapis: #087b88;
 }
 
-article > h1 {
-  letter-spacing: 0.01em;
+/* 1. Urgent Overflow Prevention & Page Layout Bounds */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+#quartz-root, .page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.page > #quartz-body {
+  grid-template-columns: minmax(0, 1fr) 280px;
+  grid-template-areas:
+    "grid-header grid-sidebar-right"
+    "grid-center grid-sidebar-right"
+    "grid-footer grid-sidebar-right";
+  column-gap: 2.5rem;
+  row-gap: 1.5rem;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media all and (max-width: 900px) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "grid-header"
+      "grid-center"
+      "grid-sidebar-right"
+      "grid-footer";
+  }
+}
+
+.page > #quartz-body .sidebar.left {
+  display: none !important;
+}
+
+/* Hide Properties / Metadata Panel */
+.note-properties,
+.metadata-container,
+details.note-properties {
+  display: none !important;
+}
+
+/* 4. Display Serif for Headings */
+h1, h2, h3, h4, h5, h6,
+.article-title,
+.page-header h1 {
+  font-family: 'Cormorant Garamond', 'Spectral', Georgia, serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+}
+
+h1.article-title, .page-header h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--dark);
 }
 
 article > h1::after {
-  content: "";
-  display: block;
-  width: 5rem;
-  height: 2px;
-  margin-top: 0.7rem;
-  background: var(--portfolio-rule);
+  display: none;
 }
 
 article h2 {
+  font-size: 1.7rem;
+  margin-top: 2.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.5rem;
   position: relative;
-  margin-top: 3rem;
-  padding-bottom: 1.55rem;
 }
 
-/* Muqarnas-inspired stepped facets: an architectural divider, not a generic rule. */
+/* 5. Left-aligned ~60% width Girih Section Divider */
 article h2::after {
   content: "";
   position: absolute;
-  bottom: 0.35rem;
+  bottom: 0;
   left: 0;
-  width: min(14rem, 45vw);
-  height: 0.6rem;
-  background:
-    linear-gradient(135deg, transparent 45%, var(--gold) 46% 54%, transparent 55%) 0 0 / 1.2rem
-      0.6rem,
-    linear-gradient(45deg, transparent 45%, var(--secondary) 46% 54%, transparent 55%) 0.6rem 0 /
-      1.2rem 0.6rem;
+  width: min(220px, 60%);
+  height: 24px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="24" viewBox="0 0 120 24"><path d="M0,12 Q15,3 30,12 Q45,21 60,12 Q75,3 90,12 Q105,21 120,12" fill="none" stroke="%235cc7ca" stroke-width="1.2" opacity="0.6"/><path d="M0,12 Q15,21 30,12 Q45,3 60,12 Q75,21 90,12 Q105,3 120,12" fill="none" stroke="%235cc7ca" stroke-width="1.2" opacity="0.6"/><polygon points="30,4 33,9 40,9 35,12 37,17 30,14 23,17 25,12 20,9 27,9" fill="none" stroke="%23d7a52d" stroke-width="1.4"/><polygon points="90,4 93,9 100,9 95,12 97,17 90,14 83,17 85,12 80,9 87,9" fill="none" stroke="%23ec8a50" stroke-width="1.4"/><line x1="0" y1="12" x2="120" y2="12" stroke="%23d7a52d" stroke-width="0.8" opacity="0.4" stroke-dasharray="4,4"/></svg>');
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  opacity: 0.85;
+}
+
+/* Navigation Bar & Unified Strapwork Links */
+.portfolio-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  margin: 1rem 0 2rem;
+  padding: 0.8rem 0;
+  border-bottom: 2px solid color-mix(in srgb, var(--gold) 40%, transparent);
+  position: relative;
+}
+
+.portfolio-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--secondary), var(--gold), var(--secondary), transparent);
+}
+
+a.portfolio-mark,
+a.portfolio-mark:hover,
+a.portfolio-mark:focus,
+a.portfolio-mark:visited {
+  background-color: transparent !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.portfolio-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.portfolio-mark:hover {
+  transform: scale(1.05);
   opacity: 0.9;
+  filter: none !important;
+}
+
+.portfolio-mark svg {
+  display: block;
+  border-radius: 8px;
+}
+
+.portfolio-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1.8rem;
+}
+
+.portfolio-nav-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.4rem 0.2rem;
+  color: var(--darkgray);
+  font-family: var(--bodyFont), "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: transparent !important;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.portfolio-nav-link span {
+  color: var(--gold);
+  font-family: var(--codeFont), monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.portfolio-nav-link:hover,
+.portfolio-nav-link:focus-visible {
+  color: var(--secondary);
+  border-bottom-color: var(--gold);
+  text-decoration: none;
+}
+
+/* 2. Manuscript Bio Card (Compact & Clean Layout) */
+.profile-hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin: 1.5rem 0 2rem;
+  padding: 1.5rem;
+  height: auto;
+  min-height: unset;
+  border-radius: 0;
+  background: color-mix(in srgb, var(--light) 95%, var(--secondary) 5%);
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: -5px;
+  box-shadow: none;
+
+  @media all and (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem;
+  }
+}
+
+.profile-intro {
+  flex: 1;
+}
+
+.profile-intro p {
+  margin: 0;
+  font-family: var(--bodyFont), "Inter", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--darkgray);
+}
+
+/* 3. Original Aspect Ratio Profile Photo Frame (No dummy clip-path) */
+.profile-avatar {
+  width: min(280px, 100%);
+  height: auto;
+  clip-path: none !important;
+  border-radius: 0;
+  border: 1px solid var(--gold);
+  padding: 4px;
+  background: color-mix(in srgb, var(--gold) 15%, transparent);
+  box-shadow: none;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.02);
+}
+
+/* 3. Squared off tags & internal link styles */
+a.internal {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 2px !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--secondary) 60%, transparent);
+  color: var(--secondary);
+  font-weight: 500;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a.internal:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+  background-color: transparent !important;
+}
+
+.tag-link, a.tag-link {
+  border-radius: 0 !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--secondary);
+  padding: 2px 4px !important;
+  font-size: 0.85rem;
+}
+
+/* Header & Spacing Rhythm */
+header {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
 }
 
 article a.external {
@@ -47,92 +287,20 @@ article a.external {
   text-underline-offset: 3px;
 }
 
-.page > #quartz-body .sidebar.left {
-  border-right: 1px solid var(--lightgray);
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--secondary) 7%, transparent),
-    transparent 30%
-  );
-}
-
 blockquote {
   border-left-color: var(--tertiary);
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
 }
 
-.portfolio-nav {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  margin: 0.5rem 0 2.5rem;
-  padding: 0.8rem 0;
-  border-top: 1px solid var(--gold);
-  border-bottom: 1px solid var(--lightgray);
-}
-
-.portfolio-mark {
-  display: grid;
-  grid-template-columns: repeat(2, 0.35rem);
-  gap: 0.16rem;
-  padding: 0.35rem;
-  background: var(--secondary);
-  transform: rotate(45deg);
-}
-
-.portfolio-mark i {
-  display: block;
-  width: 0.35rem;
-  height: 0.35rem;
-  background: var(--light);
-}
-
-.portfolio-nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.15rem 0.8rem;
-}
-
-.portfolio-nav-link {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.3rem;
-  padding: 0.25rem 0.1rem;
-  color: var(--darkgray);
-  font-family: var(--codeFont);
-  font-size: 0.78rem;
-  letter-spacing: 0.035em;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.portfolio-nav-link span {
-  color: var(--tertiary);
-  font-size: 0.65rem;
-}
-
-.portfolio-nav-link:hover,
-.portfolio-nav-link:focus-visible {
-  color: var(--secondary);
-  text-decoration: none;
-}
-
-.portfolio-nav-note {
-  color: var(--tertiary);
-  font-family: var(--headerFont);
-  font-size: 0.95rem;
-  white-space: nowrap;
-}
-
-/* Faint generated girih construction: it assembles in the header like a build. */
+/* Faint background girih field */
 .girih-field {
   position: absolute;
   inset: 0 0 auto;
   height: 9rem;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.13;
+  opacity: 0.12;
 }
 
 .girih-field svg {
@@ -152,21 +320,11 @@ blockquote {
 .girih-field.is-ready .girih-tiles path {
   animation: tile-assemble 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.girih-field.is-ready .girih-tiles path:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.girih-field.is-ready .girih-tiles path:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.girih-field.is-ready .girih-tiles path:nth-child(4) {
-  animation-delay: 0.3s;
-}
-.girih-field.is-ready .girih-tiles path:nth-child(5) {
-  animation-delay: 0.4s;
-}
-.girih-field.is-ready .girih-tiles path:nth-child(6) {
-  animation-delay: 0.5s;
-}
+.girih-field.is-ready .girih-tiles path:nth-child(2) { animation-delay: 0.1s; }
+.girih-field.is-ready .girih-tiles path:nth-child(3) { animation-delay: 0.2s; }
+.girih-field.is-ready .girih-tiles path:nth-child(4) { animation-delay: 0.3s; }
+.girih-field.is-ready .girih-tiles path:nth-child(5) { animation-delay: 0.4s; }
+.girih-field.is-ready .girih-tiles path:nth-child(6) { animation-delay: 0.5s; }
 @keyframes tile-assemble {
   to {
     opacity: 1;
@@ -174,25 +332,7 @@ blockquote {
   }
 }
 
-header {
-  position: relative;
-  overflow: hidden;
-}
-header > .portfolio-nav {
-  position: relative;
-}
-
-/* Pomegranate seed ornament: one quiet organic motif against the geometry. */
-.page-footer::after {
-  content: "❋";
-  display: block;
-  color: var(--tertiary);
-  font-size: 1.4rem;
-  margin-top: 1.5rem;
-  opacity: 0.75;
-}
-
-/* The experience page becomes a caravanserai route rather than an ordinary list. */
+/* Experience timeline styling */
 body[data-slug="experience/index"] article ul {
   position: relative;
   list-style: none;
@@ -210,7 +350,7 @@ body[data-slug="experience/index"] article ul::before {
 }
 body[data-slug="experience/index"] article li {
   position: relative;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 }
 body[data-slug="experience/index"] article li::before {
   content: "◆";
@@ -219,41 +359,12 @@ body[data-slug="experience/index"] article li::before {
   top: -0.1rem;
   color: var(--gold);
   font-size: 1.3rem;
-  text-shadow:
-    0 0 0 var(--secondary),
-    2px 2px 0 var(--light);
 }
 body[data-slug="experience/index"] article li a {
   display: inline-block;
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--lightgray);
-  border-radius: 0.25rem;
+  border-radius: 0;
   background: color-mix(in srgb, var(--light) 88%, var(--secondary));
   text-decoration: none;
-}
-
-body[data-slug="about/bio"] article img[alt*="scribe"],
-body[data-slug="about/bio"] article img[alt*="woven"] {
-  display: block;
-  width: 100%;
-  margin: 1.5rem auto 2.5rem;
-  border: 1px solid var(--gold);
-  box-shadow: 10px 10px 0 color-mix(in srgb, var(--secondary) 25%, transparent);
-}
-
-body[data-slug="connect/index"] article img[alt^="Simorgh"] {
-  display: block;
-  width: min(18rem, 70%);
-  margin: 1.5rem auto;
-}
-
-@media all and (max-width: 600px) {
-  .portfolio-nav {
-    grid-template-columns: auto 1fr;
-    margin-bottom: 1.5rem;
-  }
-
-  .portfolio-nav-note {
-    display: none;
-  }
 }

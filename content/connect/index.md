@@ -19,6 +19,3 @@ I welcome conversations about backend engineering, databases, data-intensive app
 ## CV
 
 [Download my CV](/media/documents/cv_2026.pdf)
-
-> [!tip]
-> Keep the downloadable CV in `content/media/documents/`. Replace the file using the same name when you update it; the link above will stay valid.

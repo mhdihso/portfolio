@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Seyedmahdi Hosseini
+  pageTitle: Mehdi Hosseini
   pageTitleSuffix: " | Backend & Data Systems"
   enableSPA: true
   enablePopovers: true
@@ -17,7 +17,7 @@ configuration:
     cdnCaching: true
     typography:
       header: "Cormorant Garamond"
-      body: "Source Serif 4"
+      body: "Inter"
       code: "IBM Plex Mono"
     colors:
       lightMode:
@@ -139,7 +139,7 @@ plugins:
   - source: github:quartz-community/search
     enabled: true
     layout:
-      position: left
+      position: header
       priority: 20
       group: toolbar
       groupOptions:
@@ -165,20 +165,20 @@ plugins:
       position: beforeBody
       priority: 30
   - source: github:quartz-community/page-title
-    enabled: true
+    enabled: false
     layout:
-      position: left
+      position: header
       priority: 10
   - source: github:quartz-community/darkmode
     enabled: true
     layout:
-      position: left
+      position: header
       priority: 30
       group: toolbar
   - source: github:quartz-community/reader-mode
     enabled: true
     layout:
-      position: left
+      position: header
       priority: 35
       group: toolbar
   - source: github:quartz-community/breadcrumbs
@@ -224,7 +224,7 @@ plugins:
         - tags
         - aliases
       excludedProperties: []
-      hidePropertiesView: false
+      hidePropertiesView: true
       delimiters: ---
       language: yaml
     order: 5

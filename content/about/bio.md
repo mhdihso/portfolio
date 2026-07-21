@@ -1,21 +1,17 @@
 ---
 title: Bio
-description: Background and technical profile of Seyedmahdi Hosseini.
+description: Background and technical profile of Mehdi Hosseini.
 tags:
   - about
 ---
 
 ## Profile
 
-I am Seyedmahdi Hosseini, a backend-oriented Computer Science master's student based in Tübingen. I enjoy making systems understandable, reliable, and efficient - especially where application code meets data.
+I am Mehdi Hosseini, a backend-oriented Computer Science master's student based in Tübingen. I enjoy making systems understandable, reliable, and efficient - especially where application code meets data.
 
 My experience includes designing backend services with Python and Django, building REST APIs, improving database performance, and supporting production-facing web applications and data workflows.
 
-![A Persian miniature-inspired illustration of a scribe-engineer designing a data system.](../media/images/persian-scribe-hero.png)
-
 ## Technical toolkit
-
-![Technical skills rendered as a woven rug pattern.](../media/images/skill-rug.svg)
 
 | Area            | Tools and experience                                                      |
 | --------------- | ------------------------------------------------------------------------- |

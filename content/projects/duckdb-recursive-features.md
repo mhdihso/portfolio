@@ -12,6 +12,3 @@ tags: [project, databases, duckdb, sql, research]
 - Researching recursive query features and analytical capabilities in modern database systems.
 - Examining recursive SQL execution models and query optimisation.
 - Analysing database-engine behaviour and performance characteristics during recursive data processing.
-
-> [!note]
-> Add links to a paper, code repository, slides, or demo here when they are public.

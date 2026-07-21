@@ -1,4 +1,4 @@
-# Seyedmahdi Hosseini - Portfolio
+# Mehdi Hosseini - Portfolio
 
 A Markdown-first personal portfolio built with [Quartz 5](https://quartz.jzhao.xyz/). The website content lives entirely in `content/`; Quartz builds it into a static site.
 
