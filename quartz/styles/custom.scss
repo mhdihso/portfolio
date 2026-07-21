@@ -31,3 +31,79 @@ article a.external {
 blockquote {
   border-left-color: var(--tertiary);
 }
+
+.portfolio-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0.5rem 0 2.5rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--lightgray);
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.portfolio-mark {
+  display: grid;
+  grid-template-columns: repeat(2, 0.35rem);
+  gap: 0.16rem;
+  padding: 0.35rem;
+  background: var(--secondary);
+  transform: rotate(45deg);
+}
+
+.portfolio-mark i {
+  display: block;
+  width: 0.35rem;
+  height: 0.35rem;
+  background: var(--light);
+}
+
+.portfolio-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.8rem;
+}
+
+.portfolio-nav-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  padding: 0.25rem 0.1rem;
+  color: var(--darkgray);
+  font-family: var(--codeFont);
+  font-size: 0.78rem;
+  letter-spacing: 0.035em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.portfolio-nav-link span {
+  color: var(--tertiary);
+  font-size: 0.65rem;
+}
+
+.portfolio-nav-link:hover,
+.portfolio-nav-link:focus-visible {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.portfolio-nav-note {
+  color: var(--tertiary);
+  font-family: var(--headerFont);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+@media all and (max-width: 600px) {
+  .portfolio-nav {
+    grid-template-columns: auto 1fr;
+    margin-bottom: 1.5rem;
+  }
+
+  .portfolio-nav-note {
+    display: none;
+  }
+}
