@@ -145,6 +145,37 @@ a.portfolio-mark:visited {
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
+/* Astrolabe brand mark & spinning star-map rete */
+.astrolabe-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.astrolabe-svg {
+  display: block;
+  width: 38px;
+  height: 38px;
+}
+
+.astrolabe-rete {
+  transform-origin: 120px 120px;
+  animation: astrolabe-spin 22s linear infinite;
+}
+
+.astrolabe-mark:hover .astrolabe-rete {
+  animation-duration: 6s;
+}
+
+@keyframes astrolabe-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .portfolio-mark:hover {
   transform: scale(1.05);
   opacity: 0.9;
@@ -338,6 +369,73 @@ body[data-slug="experience/index"] article ul {
   list-style: none;
   margin-left: 0.4rem;
   padding-left: 2.2rem;
+}
+
+/* Minimal Khayyám Verse Footer Element - Home Page Only, Centered in Content Column */
+body:not([data-slug="index"]) .khayyam-footer {
+  display: none !important;
+}
+
+body[data-slug="index"] .khayyam-footer {
+  display: block;
+  width: 100%;
+  margin: 2.5rem auto 1rem;
+  padding: 1.25rem 0 0.5rem;
+  border-top: 1px dashed color-mix(in srgb, var(--gold) 35%, transparent);
+  text-align: center;
+  box-sizing: border-box;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+
+.khayyam-grass-stage {
+  width: 100%;
+  height: 48px;
+  overflow: hidden;
+  margin: 0 auto 0.5rem;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.khayyam-grass-stage svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.khayyam-footer:hover {
+  opacity: 0.95;
+}
+
+.khayyam-fa {
+  font-family: var(--headerFont), "Cormorant Garamond", Georgia, serif;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--darkgray);
+  margin: 0 0 0.2rem;
+  direction: rtl;
+}
+
+.khayyam-fa span {
+  color: var(--gold);
+  margin-right: 0.4rem;
+}
+
+.khayyam-en {
+  font-family: var(--headerFont), "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--gray);
+  margin: 0;
+}
+
+.khayyam-credit {
+  font-style: normal;
+  font-family: var(--codeFont), monospace;
+  font-size: 0.68rem;
+  color: var(--tertiary);
+  margin-left: 0.35rem;
+  letter-spacing: 0.04em;
 }
 body[data-slug="experience/index"] article ul::before {
   content: "";
