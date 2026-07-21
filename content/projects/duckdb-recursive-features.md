@@ -1,13 +1,13 @@
 ---
-title: Rekursive Features in DuckDB
+title: Recursive Features in DuckDB
 description: Seminar research into recursive query features, SQL execution models, and performance characteristics in DuckDB.
 date: 2026-04-01
 tags: [project, databases, duckdb, sql, query-optimization, research]
 ---
 
-## Seminararbeit — Rekursive Features in DuckDB
+## Seminar Research — Recursive Features in DuckDB
 
-**Universität Tübingen · Sommer 2026 - Present · Tübingen, Deutschland**
+**University of Tübingen · Summer 2026 - Present · Tübingen, Germany**
 
 ### Focus & Research Scope
 - Research on **recursive query features** and analytical capabilities in modern database systems.

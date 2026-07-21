@@ -7,7 +7,7 @@ description: Backend & Database Systems Engineer and Computer Science master's s
   <img src="static/mehdi.jpg" alt="Mehdi Hosseini" class="profile-avatar" />
   <div class="profile-intro">
     <div class="hero-headline">Backend & Database Systems Engineer</div>
-    <p>I am a backend-oriented Computer Science Master's student at the <strong>University of Tübingen</strong> with hands-on experience developing backend services, REST APIs, and SQL database pipelines. Currently working as a Werkstudent at <strong>Robert Bosch GmbH</strong> (Mobility Electronics Quality) on internal web applications and data processing workflows.</p>
+    <p>I am a backend-oriented Computer Science Master's student at the <strong>University of Tübingen</strong> with hands-on experience developing backend services, REST APIs, and SQL database pipelines. Currently working as a Working Student at <strong>Robert Bosch GmbH</strong> (Mobility Electronics Quality) on internal web applications and data processing workflows.</p>
     <div class="credential-bar">
       <span class="cred-badge">🏢 Robert Bosch GmbH</span>
       <span class="cred-badge">🏛️ Deutsche Bundesbank</span>

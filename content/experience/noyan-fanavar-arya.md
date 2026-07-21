@@ -5,7 +5,7 @@ date: 2019-01-01
 tags: [experience, python, django, postgresql, mongodb, redis, docker, linux]
 ---
 
-## Backend-Entwickler & Mitgründer
+## Backend Developer & Co-Founder
 
 **NoyanFanavarArya · 2019 - 2024**
 

@@ -5,13 +5,13 @@ date: 2025-01-01
 tags: [experience, sql, data-validation, bundesbank]
 ---
 
-## IT-Praktikant — System- & Projektmanagement
+## IT Intern — System & Project Management
 
 **Deutsche Bundesbank · 2025 · Hannover, Germany**
 
 ### Responsibilities & Focus
 - Supported internal IT systems, **SQL-based validation workflows**, and internal testing processes.
-- Contributed to data validation and procedural support for IT applications in the area of **monetary policy (Geldpolitik)**.
+- Contributed to data validation and procedural support for IT applications in the area of **monetary policy**.
 - Worked with structured data processes and **database-oriented system analysis**.
 
 ### Tools & Stack

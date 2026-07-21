@@ -1,13 +1,13 @@
 ---
-title: KI- und Suchsysteme
+title: AI & Search Systems
 description: Projects in AI systems, information retrieval, search engine architecture, ranking, and scalable backend design.
 date: 2026-04-01
 tags: [project, ai, information-retrieval, search, backend]
 ---
 
-## Projekte zu KI- und Suchsystemen
+## AI & Search Systems Projects
 
-**Universität Tübingen · Sommer 2026 - Present · Tübingen, Deutschland**
+**University of Tübingen · Summer 2026 - Present · Tübingen, Germany**
 
 ### Focus & System Scope
 - Development of AI-focused system projects in **Information Retrieval** and intelligent search architectures.

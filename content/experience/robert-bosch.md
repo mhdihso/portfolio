@@ -5,7 +5,7 @@ date: 2026-04-01
 tags: [experience, python, sql, data-pipelines, outsystems, bosch]
 ---
 
-## Werkstudent — Interne Webanwendungen im automotiven Qualitätsumfeld
+## Working Student — Internal Web Applications in Automotive Quality
 
 **Robert Bosch GmbH · Apr 2026 - Present · Reutlingen, Germany**
 
