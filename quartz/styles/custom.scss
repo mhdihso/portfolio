@@ -1,0 +1,33 @@
+@use "./variables.scss" as *;
+
+// put your custom CSS here!
+/* A restrained Persian reference: warm paper, lapis teal, and a fine tile-inspired rule. */
+:root {
+  --portfolio-rule: linear-gradient(90deg, var(--secondary), var(--tertiary), var(--secondary));
+}
+
+article > h1 {
+  letter-spacing: 0.01em;
+}
+
+article > h1::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 2px;
+  margin-top: 0.7rem;
+  background: var(--portfolio-rule);
+}
+
+article a.external {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.page > #quartz-body .sidebar.left {
+  border-right: 1px solid var(--lightgray);
+}
+
+blockquote {
+  border-left-color: var(--tertiary);
+}
