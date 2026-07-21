@@ -650,13 +650,45 @@ article pre code {
   margin-top: 0.15rem;
 }
 
-/* Homepage Right Sidebar Alignment & TOC Hide */
-body[data-slug="index"] .sidebar.right {
-  padding-top: 11.2rem !important;
+/* Homepage Right Sidebar Desktop Alignment & Mobile Responsiveness */
+@media all and (min-width: 901px) {
+  body[data-slug="index"] .sidebar.right {
+    padding-top: 11.2rem !important;
+  }
 }
 
 body[data-slug="index"] .sidebar.right .toc {
   display: none !important;
+}
+
+@media all and (max-width: 900px) {
+  body[data-slug="index"] .sidebar.right {
+    padding-top: 0 !important;
+    position: relative !important;
+    height: auto !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .career-timeline-widget {
+    max-height: none !important;
+    width: 100% !important;
+    margin: 1.5rem 0 !important;
+    box-sizing: border-box !important;
+    flex: none !important;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .career-timeline-widget {
+    padding: 1rem 0.85rem !important;
+  }
+  .timeline-track {
+    padding-left: 1rem !important;
+  }
+  .timeline-marker {
+    left: -1rem !important;
+  }
 }
 
 /* ==========================================================================
