@@ -501,6 +501,17 @@ body[data-slug="experience/index"] article li a {
    FAANG-Grade Design System Overhaul & Component Styling
    ========================================================================== */
 
+/* Profile Name (above headline) */
+.profile-name {
+  font-family: var(--headerFont), "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 0.2rem 0;
+}
+
 /* Hero Headline & Credential Badges */
 .hero-headline {
   font-family: var(--headerFont), "Cormorant Garamond", Georgia, serif;

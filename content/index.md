@@ -6,6 +6,7 @@ description: Backend engineer and co-founder with 5+ years building production b
 <div class="profile-hero">
   <img src="static/mehdi.jpg" alt="Mehdi Hosseini" class="profile-avatar" />
   <div class="profile-intro">
+    <div class="profile-name">Mehdi Hosseini</div>
     <div class="hero-headline">Backend Engineer & Systems Builder</div>
     <p>I co-founded and ran the full engineering stack of a software company for <strong>5 years</strong> — designing APIs, managing production databases, containerizing deployments, and shipping software end-to-end. Now pursuing an <strong>M.Sc. in Computer Science</strong> at the University of Tübingen while working in production at <strong>Robert Bosch GmbH</strong>.</p>
     <p style="margin-top:0.6rem;">My strengths are <strong>backend systems, SQL and database engineering</strong>, and the operational mindset that comes from owning a production system with no one else to fix it.</p>
