@@ -1,47 +1,41 @@
 ---
 title: NoyanFanavarArya
-description: Co-Founder and Backend & Infrastructure Lead — built a technology company from zero, owning the entire engineering stack including Kafka streaming, Kubernetes orchestration, distributed systems, and production databases.
+description: Co-founder and backend engineer — 5 years building and operating production backend systems, APIs, and databases.
 date: 2019-01-01
-tags: [experience, python, django, kafka, kubernetes, docker-swarm, postgresql, mongodb, redis, distributed-systems, devops, co-founder]
+tags: [experience, python, django, fastapi, postgresql, mongodb, redis, docker, linux, co-founder]
 ---
 
-## Co-Founder & Backend / Infrastructure Lead
+## Co-Founder & Backend Engineer
 
 **NoyanFanavarArya · 2019 – 2024 · Iran**
 
-As co-founder and head of engineering, I built this technology company from the ground up and owned the full technical stack for 5 years — from initial architecture decisions to production operations across all systems.
+I co-founded this software company and ran its engineering for five years. Not as a founding engineer with a tech lead above me — as the person who made the architectural decisions and owned the consequences.
 
-### Backend & API Engineering
-- Designed and maintained scalable **microservices and backend services** with Python, Django, and FastAPI
-- Architected and developed **RESTful APIs** serving multiple client applications with high availability requirements
-- Applied clean architecture principles and maintained testable, maintainable codebases across the team
+### What I Built
 
-### Distributed Systems & Event Streaming
-- Built and operated **Apache Kafka** pipelines for real-time event streaming and asynchronous processing between services
-- Designed **event-driven architectures** decoupling producers and consumers across microservices
-- Implemented message queue patterns for reliable, fault-tolerant data flow under load
+**Backend services & APIs**
+- Designed and implemented Python-based backend services with Django and FastAPI
+- Built RESTful APIs serving multiple client applications
+- Maintained service reliability across the full software lifecycle — design, deployment, debugging, maintenance
 
-### DevOps & Container Orchestration
-- Orchestrated containerized services with **Kubernetes** and **Docker Swarm** — managing deployments, scaling policies, health checks, and rollouts
-- Containerized all services with **Docker**, establishing consistent environments from development to production
-- Managed **Linux servers**, handled system administration, and maintained production infrastructure
-- Implemented **load balancing** strategies for traffic distribution across service replicas
-- Set up CI/CD pipelines and managed Git-based workflows for the entire team
+**Database engineering**
+- Ran PostgreSQL, MongoDB, and Redis in production
+- Wrote and optimized queries — analyzed slow query logs, rewrote inefficient queries, tuned indexes and schema
+- Managed database migrations, backup strategies, and data consistency across services
 
-### Observability & Reliability
-- Built **observability and monitoring stacks** across services — logging, metrics collection, and alerting
-- Implemented structured logging and distributed tracing to diagnose production issues
-- Managed incident response, on-call debugging, and system recovery
+**Infrastructure & deployment**
+- Containerized all services with **Docker**
+- Worked with **Docker Swarm** for multi-node container orchestration
+- Worked with **Apache Kafka** for event-driven messaging between services
+- Managed **Linux servers** — provisioning, configuration, and ongoing maintenance
+- Applied load balancing strategies to distribute traffic across service instances
+- Built CI/CD workflows and maintained Git-based team processes
 
-### Database Engineering
-- Ran **PostgreSQL, MongoDB, and Redis** in production with real data workloads
-- Performed **query optimization** — analyzed query plans, rewrote slow queries, tuned indexes and schemas
-- Managed database migrations, backup strategies, and data integrity across multiple services
+### What This Experience Actually Means
 
-### Leadership & Ownership
-- Made **architectural decisions** for the full engineering stack — languages, frameworks, databases, infrastructure
-- Led technical hiring, onboarding, and knowledge transfer within the engineering team
-- Operated end-to-end across the software lifecycle: design, implementation, deployment, debugging, and maintenance
+Five years of co-founder engineering means no one else cleans up your mistakes. When a service went down, I diagnosed it. When a query became slow under real load, I fixed it. When a deployment broke, I rolled it back and figured out why.
 
-### Tools & Stack
-`Python` · `Django` · `FastAPI` · `RESTful APIs` · `Apache Kafka` · `Kubernetes` · `Docker Swarm` · `Docker` · `PostgreSQL` · `MongoDB` · `Redis` · `Linux` · `Load Balancing` · `Observability` · `CI/CD` · `Microservices`
+This is different from being a developer inside a large engineering team. The breadth of ownership — from database schema design to server administration to API contracts — is what this experience represents.
+
+### Stack
+`Python` · `Django` · `FastAPI` · `PostgreSQL` · `MongoDB` · `Redis` · `Docker` · `Docker Swarm` · `Apache Kafka` · `Linux` · `REST APIs` · `Git` · `CI/CD`

@@ -1,19 +1,20 @@
 ---
 title: Mehdi Hosseini
-description: Backend & Systems Engineer with 5+ years building distributed systems, scalable services, DevOps infrastructure, and high-performance databases. Currently M.Sc. Computer Science at University of Tübingen.
+description: Backend engineer and co-founder with 5+ years building production backend systems, APIs, and databases. M.Sc. Computer Science, University of Tübingen. Currently at Robert Bosch GmbH.
 ---
 
 <div class="profile-hero">
   <img src="static/mehdi.jpg" alt="Mehdi Hosseini" class="profile-avatar" />
   <div class="profile-intro">
-    <div class="hero-headline">Backend & Distributed Systems Engineer</div>
-    <p>Backend engineer and <strong>co-founder</strong> with 5+ years building production-grade distributed systems, high-throughput APIs, event-driven pipelines, and containerized infrastructure. From designing <strong>Kafka streaming architectures</strong> and orchestrating services with <strong>Kubernetes & Docker Swarm</strong>, to optimizing complex multi-table queries against real enterprise-scale databases at <strong>Deutsche Bundesbank</strong> and <strong>Robert Bosch GmbH</strong> — I build systems that scale under real-world load.</p>
+    <div class="hero-headline">Backend Engineer & Systems Builder</div>
+    <p>I co-founded and ran the full engineering stack of a software company for <strong>5 years</strong> — designing APIs, managing production databases, containerizing deployments, and shipping software end-to-end. Now pursuing an <strong>M.Sc. in Computer Science</strong> at the University of Tübingen while working in production at <strong>Robert Bosch GmbH</strong>.</p>
+    <p style="margin-top:0.6rem;">My strengths are <strong>backend systems, SQL and database engineering</strong>, and the operational mindset that comes from owning a production system with no one else to fix it.</p>
     <div class="credential-bar">
       <span class="cred-badge">🏢 Robert Bosch GmbH</span>
       <span class="cred-badge">🏛️ Deutsche Bundesbank</span>
-      <span class="cred-badge">🚀 Co-Founder · NoyanFanavarArya</span>
+      <span class="cred-badge">🚀 Co-Founder · 5 Years</span>
       <span class="cred-badge">🎓 M.Sc. · Univ. of Tübingen</span>
-      <span class="cred-badge status-open">🟢 Open to Senior Backend / Systems Roles</span>
+      <span class="cred-badge status-open">🟢 Open to Backend / Systems Roles</span>
     </div>
   </div>
 </div>
@@ -22,7 +23,7 @@ description: Backend & Systems Engineer with 5+ years building distributed syste
 
 <div class="skills-section">
 
-## Core Competencies
+## Technical Stack
 
 <div class="skills-grid">
 
@@ -30,32 +31,32 @@ description: Backend & Systems Engineer with 5+ years building distributed syste
 <div class="skill-card-icon">⚙️</div>
 <h3 class="skill-card-title">Backend Engineering</h3>
 <ul class="skill-card-list">
-<li>Python · Django · FastAPI · REST APIs</li>
-<li>Java · JavaScript · Clean Architecture</li>
-<li>Microservices · Event-Driven Design</li>
-<li>Service decomposition & API contracts</li>
+<li>Python · Django · FastAPI</li>
+<li>RESTful API design & implementation</li>
+<li>Clean, testable, maintainable code</li>
+<li>5 years of production backend work</li>
 </ul>
 </div>
 
 <div class="skill-card">
 <div class="skill-card-icon">🗄️</div>
-<h3 class="skill-card-title">Databases & Query Engineering</h3>
+<h3 class="skill-card-title">Databases</h3>
 <ul class="skill-card-list">
 <li>PostgreSQL · MongoDB · Redis</li>
-<li>Complex SQL · Query plan analysis</li>
-<li>Schema design & index optimization</li>
-<li>Enterprise-scale DB at Deutsche Bundesbank</li>
+<li>SQL — complex queries, query plan analysis</li>
+<li>Schema design, indexing, optimization</li>
+<li>Data pipelines at Bosch & Bundesbank</li>
 </ul>
 </div>
 
 <div class="skill-card">
 <div class="skill-card-icon">🐳</div>
-<h3 class="skill-card-title">DevOps & Infrastructure</h3>
+<h3 class="skill-card-title">Infrastructure & DevOps</h3>
 <ul class="skill-card-list">
-<li>Docker · Kubernetes · Docker Swarm</li>
-<li>Container orchestration at scale</li>
+<li>Docker — containers & deployment workflows</li>
+<li>Docker Swarm & Kubernetes (explored)</li>
 <li>Linux server administration</li>
-<li>CI/CD pipelines · Git workflows</li>
+<li>Git · CI/CD pipelines</li>
 </ul>
 </div>
 
@@ -63,32 +64,32 @@ description: Backend & Systems Engineer with 5+ years building distributed syste
 <div class="skill-card-icon">📡</div>
 <h3 class="skill-card-title">Distributed Systems</h3>
 <ul class="skill-card-list">
-<li>Apache Kafka · Event streaming</li>
-<li>Load balancing strategies</li>
-<li>Observability & monitoring stacks</li>
-<li>Fault-tolerant system design</li>
+<li>Apache Kafka — event streaming (hands-on)</li>
+<li>Load balancing fundamentals</li>
+<li>Service decomposition & async design</li>
+<li>Observability and logging practices</li>
 </ul>
 </div>
 
 <div class="skill-card">
-<div class="skill-card-icon">🔍</div>
-<h3 class="skill-card-title">Data & AI Systems</h3>
+<div class="skill-card-icon">🔬</div>
+<h3 class="skill-card-title">Research & Data</h3>
 <ul class="skill-card-list">
-<li>DuckDB · Recursive query research</li>
+<li>DuckDB — recursive query research</li>
 <li>Information retrieval & search ranking</li>
-<li>AI-driven data pipelines</li>
-<li>Data validation at enterprise scale</li>
+<li>AI-driven data pipelines (Bosch)</li>
+<li>Data validation workflows</li>
 </ul>
 </div>
 
 <div class="skill-card">
 <div class="skill-card-icon">🧠</div>
-<h3 class="skill-card-title">Leadership & Soft Skills</h3>
+<h3 class="skill-card-title">Foundations & Soft Skills</h3>
 <ul class="skill-card-list">
-<li>Co-founder & technical lead (5 years)</li>
-<li>Cross-functional team collaboration</li>
-<li>Architecture & system design decisions</li>
+<li>Co-founder — full engineering ownership</li>
+<li>3 years university programming tutor</li>
 <li>German C1 · English B2 · Persian native</li>
+<li>Cross-functional team collaboration</li>
 </ul>
 </div>
 
@@ -97,20 +98,19 @@ description: Backend & Systems Engineer with 5+ years building distributed syste
 
 ---
 
-## Where I've Shipped
+## Experience Snapshot
 
-| Company | Role | Scope |
+| Where | Role | What |
 | :--- | :--- | :--- |
-| **Robert Bosch GmbH** | Working Student | SQL pipelines, AI-driven data workflows, enterprise web apps |
-| **Deutsche Bundesbank** | IT Intern | Complex SQL validation for monetary policy systems |
-| **NoyanFanavarArya** | Co-Founder & Backend Lead | Full-stack ownership — infra, APIs, DBs, DevOps |
+| **Robert Bosch GmbH** | Working Student (Apr 2026–) | SQL pipelines, AI data workflows, enterprise web apps |
+| **Deutsche Bundesbank** | IT Intern (Jan–Mar 2025) | SQL validation for monetary policy IT systems |
+| **NoyanFanavarArya** | Co-Founder & Backend Lead (2019–2024) | APIs, databases, containers, full ownership |
 
 ---
 
 ## Explore
 
-- [[about/bio|Full Profile & Technical Depth →]]
-- [[experience/index|Work Experience Timeline →]]
-- [[projects/duckdb-recursive-features|DuckDB Recursive Query Research →]]
-- [[projects/ai-search-systems|AI & Search Systems →]]
-- [[connect/index|Connect & Download CV →]]
+- [[about/bio|Full Profile →]]
+- [[experience/index|Work Experience →]]
+- [[projects/duckdb-recursive-features|DuckDB Research →]]
+- [[connect/index|Contact & CV →]]

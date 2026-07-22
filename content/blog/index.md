@@ -1,14 +1,12 @@
 ---
 title: Blog
-description: Notes on backend systems, databases, and learning in public.
+description: Writing on backend engineering, databases, and engineering accountability.
 tags:
   - blog
 ---
 
-Writing about backend engineering, databases, information retrieval, and the systems I am learning to build.
+Notes on backend systems, databases, and the things I've learned by building software with real consequences.
 
 ## Posts
 
-- [[blog/2026-07-portfolio-notes|Why this portfolio is Markdown-first]]
-
-Want to write something new? Copy [[templates/blog-post|the post template]] into this folder and publish it with `draft: false`.
+- [[blog/2026-07-portfolio-notes|What Five Years of Co-Founding Taught Me About Backend Engineering]] — on query optimization, containers, and the kind of learning that only happens when you own the consequences

@@ -1,25 +1,26 @@
 ---
 title: Deutsche Bundesbank
-description: IT internship — complex SQL engineering and data validation for mission-critical monetary policy systems at Germany's central bank.
+description: IT internship — SQL validation workflows and data processes for monetary policy IT systems at Germany's central bank.
 date: 2025-01-01
-tags: [experience, sql, query-optimization, data-validation, bundesbank, enterprise-databases]
+tags: [experience, sql, data-validation, bundesbank]
 ---
 
 ## IT Intern — System & Project Management
 
 **Deutsche Bundesbank · Jan – Mar 2025 · Hannover, Germany**
 
-Germany's central bank. Working with systems where data accuracy is not optional.
+A 3-month internship at Germany's central bank.
 
-### Responsibilities & Focus
-- Wrote and validated **complex, multi-table SQL queries** for monetary policy IT systems — queries operating on real enterprise-scale databases where correctness is critical
-- Performed **query analysis and performance profiling** of SQL workflows within internal database systems
-- Contributed to **data validation pipelines** ensuring the accuracy and consistency of structured financial data processes
-- Worked on **database-oriented system analysis** — understanding how application logic maps to database behavior at scale
-- Supported internal IT infrastructure testing and procedural documentation for SQL-heavy applications
+### What I Did
 
-### What Made This Different
-Working at an institution like Deutsche Bundesbank means writing SQL that is actually reviewed, tested, and trusted on financial data. The queries weren't toy examples — they touched real enterprise systems with strict correctness requirements.
+- Worked on **SQL-based validation workflows** for internal IT systems used in monetary policy applications
+- Contributed to data validation processes, ensuring correctness of structured data across database-backed systems
+- Supported internal testing and system analysis for database-oriented applications
+- Worked with structured data processes and documentation for IT project management
 
-### Tools & Stack
-`SQL` · `Complex Query Engineering` · `Data Validation` · `Enterprise Databases` · `System Analysis` · `Structured Data Processes` · `IT Documentation`
+### Why This Matters
+
+The scope was appropriate for a 3-month internship. But the institutional context is meaningful: the Deutsche Bundesbank is an institution where the software processes real monetary policy data. Correctness requirements are not optional. Working in that environment, even briefly, sharpens discipline around data integrity.
+
+### Stack
+`SQL` · `Data Validation` · `Database-Oriented System Analysis` · `Structured Data Processes`
