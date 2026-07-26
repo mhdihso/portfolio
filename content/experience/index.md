@@ -13,8 +13,9 @@ tags:
 
 ---
 
-## Academic Work
+## Systems Projects & Academic Work
 
+- [[projects/pixdb|PixDB — Domain-Specific Image DBMS]] — C-based image database engine integrating query optimization, storage engine, CV operators, and vector search *(Ongoing System Project)*
 - [[projects/duckdb-recursive-features|Recursive Features in DuckDB]] — Seminar research into recursive SQL execution models and performance in DuckDB
 - [[projects/ai-search-systems|AI & Search Systems]] — Information retrieval, search ranking, and scalable backend design
 

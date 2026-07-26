@@ -5,6 +5,7 @@ const links = [
   { label: "Home", slug: "" },
   { label: "Bio", slug: "about/bio" },
   { label: "Experience", slug: "experience" },
+  { label: "Projects", slug: "projects" },
   { label: "Blog", slug: "blog" },
   { label: "Connect", slug: "connect" },
 ]
@@ -14,11 +15,18 @@ const PortfolioNav: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
 
   return (
     <nav class="portfolio-nav" aria-label="Primary navigation">
-      <a class="portfolio-mark astrolabe-mark" href={resolveRelative(currentSlug, "" as FullSlug)} aria-label="Home page">
+      <a
+        class="portfolio-mark astrolabe-mark"
+        href={resolveRelative(currentSlug, "" as FullSlug)}
+        aria-label="Home page"
+      >
         <svg viewBox="0 0 240 240" width="38" height="38" class="astrolabe-svg">
           <circle cx="120" cy="120" r="108" fill="none" stroke="var(--gold)" stroke-width="2" />
           <g stroke="var(--gold)" stroke-width="1" opacity="0.75">
-            {[0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 315, 330, 345].map((deg) => {
+            {[
+              0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270,
+              285, 300, 315, 330, 345,
+            ].map((deg) => {
               const a = (deg * Math.PI) / 180
               const r1 = 108
               const r2 = deg % 30 === 0 ? 98 : 103
@@ -32,8 +40,24 @@ const PortfolioNav: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
               )
             })}
           </g>
-          <circle cx="120" cy="120" r="86" fill="none" stroke="var(--secondary)" stroke-width="1" opacity="0.6" />
-          <circle cx="120" cy="120" r="64" fill="none" stroke="var(--secondary)" stroke-width="1" opacity="0.4" />
+          <circle
+            cx="120"
+            cy="120"
+            r="86"
+            fill="none"
+            stroke="var(--secondary)"
+            stroke-width="1"
+            opacity="0.6"
+          />
+          <circle
+            cx="120"
+            cy="120"
+            r="64"
+            fill="none"
+            stroke="var(--secondary)"
+            stroke-width="1"
+            opacity="0.4"
+          />
           <g class="astrolabe-rete">
             <polygon
               points="120,42 133,90 181,51 149,99 198,120 149,141 181,189 133,150 120,198 107,150 59,189 91,141 42,120 91,99 59,51 107,90"
@@ -50,7 +74,15 @@ const PortfolioNav: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
             <circle cx="42" cy="120" r="3" fill="var(--secondary)" />
             <circle cx="59" cy="51" r="3" fill="var(--secondary)" />
             <circle cx="120" cy="120" r="4" fill="var(--gold)" />
-            <line x1="120" y1="24" x2="120" y2="216" stroke="var(--secondary)" stroke-width="1" opacity="0.5" />
+            <line
+              x1="120"
+              y1="24"
+              x2="120"
+              y2="216"
+              stroke="var(--secondary)"
+              stroke-width="1"
+              opacity="0.5"
+            />
           </g>
         </svg>
       </a>
@@ -70,4 +102,3 @@ const PortfolioNav: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
 }
 
 export default PortfolioNav
-

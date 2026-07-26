@@ -74,12 +74,12 @@ description: Backend engineer and co-founder with 5+ years building production b
 
 <div class="skill-card">
 <div class="skill-card-icon">🔬</div>
-<h3 class="skill-card-title">Research & Data</h3>
+<h3 class="skill-card-title">Research & Systems Projects</h3>
 <ul class="skill-card-list">
+<li>PixDB — C-based Image DBMS Engine</li>
 <li>DuckDB — recursive query research</li>
 <li>Information retrieval & search ranking</li>
 <li>AI-driven data pipelines (Bosch)</li>
-<li>Data validation workflows</li>
 </ul>
 </div>
 
@@ -112,6 +112,7 @@ description: Backend engineer and co-founder with 5+ years building production b
 ## Explore
 
 - [[about/bio|Full Profile →]]
-- [[experience/index|Work Experience →]]
+- [[experience/index|Work Experience & Systems Projects →]]
+- [[projects/pixdb|PixDB Image DBMS Engine →]]
 - [[projects/duckdb-recursive-features|DuckDB Research →]]
 - [[connect/index|Contact & CV →]]
