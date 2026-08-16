@@ -143,6 +143,9 @@ export const DefaultFrame: PageFrame = {
     right,
     footer: Footer,
   }: PageFrameProps) {
+    const slug = componentData.fileData.slug
+    const isBlogPost = slug?.startsWith("blog/") === true && !slug.endsWith("/index")
+
     return (
       <>
         <div class="left sidebar">
@@ -161,6 +164,29 @@ export const DefaultFrame: PageFrame = {
               {beforeBody.map((BodyComponent) => (
                 <BodyComponent {...componentData} />
               ))}
+              {isBlogPost && (
+                <div class="post-actions">
+                  <button
+                    type="button"
+                    class="print-post-button"
+                    aria-label="Print this blog post"
+                    title="Print this blog post"
+                    onClick={"window.print()" as any}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="18"
+                      height="18"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z" />
+                      <circle cx="18" cy="12" r="1" />
+                    </svg>
+                    <span>Print post</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
           <Content {...componentData} />

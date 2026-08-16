@@ -1041,3 +1041,147 @@ footer p, footer a {
   outline-offset: 3px;
   border-radius: 3px;
 }
+
+/* ==========================================================================
+   Blog post printing
+   ========================================================================== */
+.post-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.print-post-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--secondary) 55%, var(--lightgray));
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--light) 94%, var(--secondary) 6%);
+  color: var(--secondary);
+  font:
+    600 0.82rem/1 var(--bodyFont),
+    sans-serif;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.print-post-button svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.print-post-button circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+.print-post-button:hover {
+  border-color: var(--gold);
+  color: var(--tertiary);
+  transform: translateY(-1px);
+}
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  html,
+  body {
+    width: auto !important;
+    max-width: none !important;
+    overflow: visible !important;
+    background: var(--light) !important;
+  }
+
+  body[data-slug^="blog/"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body[data-slug^="blog/"] #quartz-root,
+  body[data-slug^="blog/"] .page {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  body[data-slug^="blog/"] .page > #quartz-body {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body[data-slug^="blog/"] .sidebar,
+  body[data-slug^="blog/"] .page-header > header,
+  body[data-slug^="blog/"] .post-actions,
+  body[data-slug^="blog/"] .center > hr,
+  body[data-slug^="blog/"] .page-footer,
+  body[data-slug^="blog/"] footer,
+  body[data-slug^="blog/"] .external-icon {
+    display: none !important;
+  }
+
+  body[data-slug^="blog/"] .center,
+  body[data-slug^="blog/"] .page-header,
+  body[data-slug^="blog/"] article {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  body[data-slug^="blog/"] .page-header {
+    margin-top: 0 !important;
+  }
+
+  body[data-slug^="blog/"] img,
+  body[data-slug^="blog/"] video,
+  body[data-slug^="blog/"] canvas,
+  body[data-slug^="blog/"] svg,
+  body[data-slug^="blog/"] iframe {
+    max-width: 100% !important;
+  }
+
+  body[data-slug^="blog/"] img,
+  body[data-slug^="blog/"] figure,
+  body[data-slug^="blog/"] canvas,
+  body[data-slug^="blog/"] svg,
+  body[data-slug^="blog/"] iframe,
+  body[data-slug^="blog/"] pre,
+  body[data-slug^="blog/"] table,
+  body[data-slug^="blog/"] .math,
+  body[data-slug^="blog/"] .katex-display,
+  body[data-slug^="blog/"] mjx-container {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body[data-slug^="blog/"] pre {
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+    word-break: break-word;
+  }
+
+  body[data-slug^="blog/"] h1,
+  body[data-slug^="blog/"] h2,
+  body[data-slug^="blog/"] h3,
+  body[data-slug^="blog/"] h4,
+  body[data-slug^="blog/"] h5,
+  body[data-slug^="blog/"] h6 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}
