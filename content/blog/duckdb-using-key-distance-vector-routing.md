@@ -8,22 +8,29 @@ draft: false
 
 _What changes when a recursive SQL query can update its state instead of remembering every intermediate row? I built a real, reproducible DuckDB experiment around Distance-Vector Routing to find out._
 
-**[Launch the interactive experiment](https://duckdb-using-key-routing.streamlit.app/)** · **[Explore the source code](https://github.com/mhdihso/Database_seminar_Distance_Vector_Routing)**
-
-![The Distance-Vector Routing Protocol Simulator presents the project as a five-phase experiment.](../media/images/duckdb-using-key-routing/01-project-overview.jpg)
-
-_The live application moves from topology design and convergence to fault injection, re-convergence, and empirical comparison._
-
 SQL is usually introduced as a language for asking questions about stored data. This project asks a more ambitious question: **can SQL also express a stateful, iterative algorithm clearly enough to function as a programming language?**
 
 Distance-Vector Routing is a demanding test. Each router begins with incomplete, local knowledge. Routers repeatedly advertise what they know, improve their tables when a cheaper route appears, and eventually converge on globally shortest paths. When a link fails, those decisions must be computed again against the changed network.
 
-The result is a complete research prototype and interactive application built with DuckDB and Streamlit. It does not compare different database products, and it does not simulate database actions in memory. The experiment compares **two recursive state models inside the same DuckDB engine**:
+The project connects algorithm theory, recursive-query semantics, physical database operations, correctness validation, failure recovery, and controlled performance measurement. The goal is not merely to visualize routing. It is to isolate what changes when the recursive relation itself can represent the algorithm's current state.
+
+## The project in one view
+
+| Dimension               | What this research investigates                                                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------------- |
+| **Core idea**           | SQL as a language for iterative, stateful computation—not only data retrieval                       |
+| **Algorithmic model**   | Bellman–Ford Distance-Vector Routing and local cost relaxation                                      |
+| **Controlled variable** | Normal append-only recursion versus DuckDB `USING KEY` state replacement                            |
+| **Physical system**     | Two real `.duckdb` files with identical schema, topology, DDL, and mutations                        |
+| **Dynamic behavior**    | Initial convergence, real link deletion, and route re-convergence                                   |
+| **Evidence**            | Executed SQL, plans, operation logs, result fingerprints, regression tests, and repeated benchmarks |
+
+The experiment compares **two recursive state models inside the same DuckDB engine**:
 
 1. A normal recursive CTE that retains simple-path candidates and ranks them after recursion.
 2. DuckDB's `USING KEY` recursive CTE, which maintains one replaceable state row per route key.
 
-Both scenarios create physical `.duckdb` files, receive the same topology, use the same schema, execute the same DDL and mutations, and return the same minimum-cost contract. Only the recursive relation semantics change.
+Both scenarios receive the same topology, use the same schema, execute the same DDL and mutations, and return the same minimum-cost contract. Only the recursive relation semantics change. This makes the work a study of state representation inside recursive SQL—not a comparison between unrelated database products.
 
 ## The research question
 
@@ -39,9 +46,9 @@ DuckDB introduced `USING KEY` in version 1.3. Instead of treating the recursive 
 
 Distance-vector protocols are grounded in the Bellman–Ford recurrence. For a source router \(u\) and destination \(v\), the best known distance is:
 
-\[
-d(u,v) = \min\_{w \in Adj(u)} \{ c(u,w) + d(w,v) \}
-\]
+$$
+d(u,v) = \min_{w \in \operatorname{Adj}(u)} \left\{ c(u,w) + d(w,v) \right\}
+$$
 
 In plain language: to reach a destination, a router considers each neighbor, adds the cost of reaching that neighbor to the neighbor's advertised distance, and keeps the cheapest proposal.
 
@@ -54,10 +61,6 @@ That maps naturally to relational operations:
 - `(from_node, to_node)` is the identity of a routing-table entry.
 
 The algorithm therefore exposes the exact conceptual difference under study. A physical router wants one current entry for a destination. A normal recursive CTE naturally accumulates candidates. A keyed recursive CTE can model the current table directly.
-
-![A four-router weighted network is instantiated as rows in the physical DuckDB database.](../media/images/duckdb-using-key-routing/02-topology-real-duckdb.jpg)
-
-_The seminar topology is small enough to inspect manually while still demonstrating alternative paths and failure recovery._
 
 ## One problem, two recursive state models
 
@@ -123,10 +126,6 @@ SELECT * FROM routing_table;
 
 The query reads the latest iteration through `routing_table` and the complete current state through `recurring.routing_table`. Only previously unknown routes or strictly cheaper proposals are emitted. The recursive table behaves much more like the state structure used by the algorithm.
 
-![The live application displays the two SQL statements that were actually executed.](../media/images/duckdb-using-key-routing/07-standard-vs-keyed-sql.jpg)
-
-_The comparison is inspectable: the application exposes the executed SQL rather than hiding it behind an animation._
-
 ## A real database experiment—not a mock
 
 An important design goal was to make the evidence observable. Each scenario owns a dedicated on-disk DuckDB database. The application executes and logs:
@@ -145,7 +144,29 @@ This is more than implementation detail. If one scenario used a different engine
 
 _The experiment changes the recursive semantics while controlling the rest of the system._
 
-## From convergence to failure and re-convergence
+## From research design to an inspectable live system
+
+After defining the theory, implementation, and controlled variables, I built an interactive research artifact so every important claim can be inspected rather than taken on trust. The application exposes the physical topology, database mutations, routing tables, executed queries, plans, result fingerprints, and repeated measurements across five connected phases.
+
+**[Launch the interactive experiment](https://duckdb-using-key-routing.streamlit.app/)** · **[Explore the complete source and research material](https://github.com/mhdihso/Database_seminar_Distance_Vector_Routing)**
+
+![The Distance-Vector Routing Protocol Simulator presents the project as a five-phase experiment.](../media/images/duckdb-using-key-routing/01-project-overview.jpg)
+
+_The live artifact follows the research workflow: topology design, convergence, fault injection, re-convergence, and empirical comparison._
+
+The seminar topology is deliberately small enough to verify by hand while still containing alternative routes and meaningful failure cases.
+
+![A four-router weighted network is instantiated as rows in the physical DuckDB database.](../media/images/duckdb-using-key-routing/02-topology-real-duckdb.jpg)
+
+_A visual graph and the underlying edge relation describe the same physical DuckDB state._
+
+The application also displays the two recursive statements it actually executes. This keeps the comparison inspectable and prevents the visualization from hiding different computational paths behind a common interface.
+
+![The live application displays the two SQL statements that were actually executed.](../media/images/duckdb-using-key-routing/07-standard-vs-keyed-sql.jpg)
+
+_The SQL, database operations, and validation evidence remain visible throughout the experiment._
+
+### From convergence to failure and re-convergence
 
 The application's first four phases make the routing behavior visible before the benchmark begins.
 
@@ -183,9 +204,9 @@ The interpretation matters. The two row metrics describe their respective execut
 
 Likewise, a browser screenshot is not a scientific timing conclusion. Small graphs complete in milliseconds, where process scheduling, compilation, caching, and measurement noise can dominate. The repeatable benchmark therefore runs deterministic connected graphs at several sizes, records minimum, maximum, mean, and standard deviation, alternates execution order, and verifies a result fingerprint for every paired run.
 
-![The repeatable scalability benchmark completed 24 of 24 executions with matching results.](../media/images/duckdb-using-key-routing/08-scalability-benchmark.jpg)
+![A full repeated benchmark compares recursive query time and state growth from four to twelve nodes.](../media/images/duckdb-using-key-routing/08-scalability-benchmark.png)
 
-_The benchmark emphasizes paired correctness and growth trends instead of presenting a single stopwatch number as a law._
+_All 50 measured executions returned matching minimum costs. The charts emphasize paired correctness and growth trends instead of presenting a single stopwatch number as a law._
 
 The most defensible conclusion is not “keyed recursion is always faster.” It is this: **when the problem's natural state has a stable key, `USING KEY` can prevent the recursive union table from growing with obsolete alternatives.** As the graph's candidate space expands, that semantic difference creates the conditions for lower memory pressure and substantial runtime gains. This is consistent with DuckDB's own larger-graph evaluation, while the project keeps its claims tied to the measurements it actually performs.
 
@@ -199,7 +220,7 @@ Performance is irrelevant if the routes are wrong. The project therefore checks 
 - every paired benchmark execution records whether the result fingerprints match;
 - the interactive failure flow makes before/after route changes manually inspectable.
 
-The test suite passes against the same implementation used by the demo. The live benchmark shown above also completed all 24 executions with matching route results.
+The test suite passes against the same implementation used by the demo. The full benchmark shown above also completed all 50 executions with matching route results.
 
 ## What this project demonstrates—and what it does not
 
