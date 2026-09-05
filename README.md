@@ -57,9 +57,9 @@ Open `http://localhost:8080`. The server rebuilds as you edit Markdown.
 
 ## Deploy with GitHub Pages
 
-1. Create an empty GitHub repository (for example `portfolio`).
-2. Set `configuration.baseUrl` in `quartz.config.yaml` to `mhdihso.github.io/portfolio`. If you publish at `mhdihso.github.io`, use `mhdihso.github.io` instead.
-3. In GitHub: **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**. The included `.github/workflows/deploy-pages.yml` deploys every push to `main`.
-4. Commit and push the repository. The current Quartz deployment reference is <https://quartz.jzhao.xyz/hosting>.
+1. The configured public URL is `mhdi.me`, emitted as the GitHub Pages `CNAME`.
+2. In GitHub: **Settings → Pages → Build and deployment → Source**, select **GitHub Actions** and set `mhdi.me` as the custom domain.
+3. Commit and push the repository. The included `.github/workflows/deploy-pages.yml` deploys every push to `main`.
+4. After GitHub provisions the domain certificate, enable **Enforce HTTPS** in the Pages settings. The current Quartz deployment reference is <https://quartz.jzhao.xyz/hosting>.
 
 Before publishing, review `content/connect/index.md`: the email address and downloadable CV are public by design.

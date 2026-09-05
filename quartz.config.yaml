@@ -6,8 +6,7 @@ configuration:
   enablePopovers: true
   analytics: null
   locale: en-US
-  # Replace before deployment. For GitHub Pages: mhdihso.github.io/<repository-name>
-  baseUrl: mhdihso.github.io
+  baseUrl: mhdi.me
   ignorePatterns:
     - private
     - templates
@@ -116,8 +115,7 @@ plugins:
   - source: github:quartz-community/og-image
     enabled: true
   - source: github:quartz-community/cname
-    # Enable only after connecting a custom domain. GitHub Pages does not need it.
-    enabled: false
+    enabled: true
   - source: github:quartz-community/canvas-page
     enabled: true
   - source: github:quartz-community/content-page
