@@ -83,7 +83,7 @@ Three months, honest scope. But the institutional context matters: these are sys
 ### M.Sc. Computer Science · University of Tübingen · 2025 – Present
 
 - Focus: scalable systems, databases, AI systems
-- **Ongoing Systems Project:** [[projects/pixdb|PixDB]] — C-based domain-specific DBMS engine for image data, visual features, and vector similarity search
+- **Ongoing Systems Project:** [[projects/pixdb|PixDB]] — C++ DuckDB extension for image metadata, visual features, ASCII rendering, and future vector similarity search
 - **Seminar:** Recursive features and execution models in DuckDB
 - **Project:** AI and search systems — information retrieval, ranking, search backend design
 - Why Tübingen: strong CS and data science faculty; one of Germany's research universities
@@ -113,4 +113,4 @@ I am happy to be challenged on algorithms, system design, and database internals
 
 ---
 
-[[experience/index|Full Experience & Systems Projects →]] · [[projects/pixdb|PixDB Image DBMS →]] · [[connect/index|Contact & CV →]]
+[[experience/index|Full Experience & Systems Projects →]] · [[projects/pixdb|PixDB DuckDB Extension →]] · [[connect/index|Contact & CV →]]

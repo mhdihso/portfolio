@@ -1,125 +1,136 @@
 ---
-title: PixDB — Architecture & Engineering Plan
-description: An engineering roadmap for PixDB, a C-based image database that combines structured metadata filters, computer-vision features, and vector similarity search.
+title: PixDB — From Standalone DBMS to DuckDB Extension
+description: The revised architecture, working SQL interface, and roadmap for PixDB as an image-query extension built on DuckDB.
 date: 2026-07-26
-tags:
-  [
-    blog,
-    project,
-    ongoing,
-    databases,
-    c,
-    storage-engine,
-    computer-vision,
-    vector-search,
-    architecture,
-  ]
+modified: 2026-09-05
+tags: [blog, project, ongoing, databases, duckdb, cpp, computer-vision, vector-search, architecture]
 draft: false
 ---
 
-# PixDB — Architecture & Engineering Plan
+# PixDB — From Standalone DBMS to DuckDB Extension
 
-> **Project status:** Ongoing. The storage pager is complete; the current focus is a slotted-page layout and dynamic catalog. For the project overview, see [[projects/pixdb|PixDB]].
+> **Project status:** Active. PixDB is now a working DuckDB extension with image metadata queries and configurable ASCII rendering. The next stages will add visual features and, later, vector search. See the [[projects/pixdb|project overview]] or [source code](https://github.com/mhdihso/PixDB).
 
-## 1. Executive Vision
+## 1. The architectural change
 
-**PixDB** is a research-prototype database management system for image data. Rather than treating an image as an opaque BLOB or sending every query to a separate vector database, it makes visual metadata, computational-photography metrics, and learned embeddings queryable alongside conventional relational fields.
+PixDB began as a plan for a standalone image database: a custom pager, catalog, SQL parser, optimizer, and execution engine written from scratch. That route is useful for learning database internals, but it spends most of the project rebuilding infrastructure that is not specific to images.
+
+The project now has a narrower and more useful goal:
+
+**PixDB is a DuckDB extension that makes image data queryable with SQL.**
+
+DuckDB owns storage, transactions, SQL parsing, query execution, and optimization. PixDB adds the image-specific layer: file discovery, metadata extraction, visual operators, embeddings, and terminal rendering. This keeps the research focus on image-aware data systems while immediately gaining DuckDB's mature relational engine.
+
+## 2. Current architecture
+
+```text
+                     SQL query
+                        │
+                ┌───────▼────────┐
+                │     DuckDB     │
+                │ SQL · storage  │
+                │ plans · joins  │
+                └───────┬────────┘
+                        │ extension API
+              ┌─────────▼──────────┐
+              │       PixDB        │
+              ├────────────────────┤
+              │ image discovery    │
+              │ metadata decoding  │
+              │ ASCII rendering    │
+              │ future CV features │
+              │ future embeddings  │
+              └────────────────────┘
+```
+
+The implementation is C++17 and follows the standard DuckDB extension structure. DuckDB is pinned as a Git submodule, and the development build produces both a statically linked DuckDB shell and a loadable `.duckdb_extension` artifact.
+
+## 3. What works today
+
+### Query a directory of images
+
+`pixdb_images()` turns a local file or glob into ordinary DuckDB rows:
 
 ```sql
-SELECT photo_id, brightness, entropy
-FROM photos
-WHERE brightness > 0.75
-  AND entropy > 6.2
-  AND contains_object('person') = 1
-ORDER BY similarity(photo_123)
-LIMIT 20;
+SELECT filename, format, width, height, channels, has_alpha, size
+FROM pixdb_images('/photos/**/*', ignore_errors = true)
+WHERE width > height
+ORDER BY width * height DESC;
 ```
 
-The project brings database-engine internals—storage, execution, and optimization—together with computer vision and vector retrieval in one system.
+The initial scanner supports JPEG, PNG, GIF, and BMP. It detects formats by signature rather than trusting file extensions, reads dimensions and channel information from image headers, and returns filesystem size and modification time.
 
----
+Because the result is relational, normal SQL composes with it:
 
-## 2. Core Goals & Engineering Demonstrations
-
-- **Custom DBMS core:** A C11 storage engine, buffer manager, SQL front end, Volcano-style executor, and optimizer built without embedding an existing database engine.
-- **Image-aware query language:** SQL extensions for `contains_object()`, `similarity()`, `entropy()`, `blur()`, and `brightness()`.
-- **Ingestion-time feature extraction:** Statistical, photographic, and learned features are computed once and stored as queryable attributes.
-- **Hybrid retrieval:** HNSW or FAISS powers k-nearest-neighbour ordering alongside relational filters.
-- **Explainable execution:** A web console will expose logical and physical query plans.
-
----
-
-## 3. High-Level Architecture
-
-```
-                    ┌──────────────────────────┐
-                    │      Image Query SQL     │
-                    └─────────────┬────────────┘
-                                  │
-                              SQL Parser
-                                  │
-                         Logical Query Plan
-                                  │
-                        Query Optimizer & Plan
-                                  │
-                       Physical Execution Plan
-                                  │
-          ┌───────────────────────┼───────────────────────┐
-          │                       │                       │
- ┌────────┴────────┐     ┌────────┴────────┐     ┌────────┴────────┐
- │ Storage Engine  │     │ Feature Engine  │     │ Vector Index    │
- │ (C Pager/Slotted│     │ (OpenCV / CV)   │     │ (HNSW / FAISS)  │
- └────────┬────────┘     └────────┬────────┘     └────────┬────────┘
-          └───────────────────────┼───────────────────────┘
-                                  │
-                         Execution Results
+```sql
+SELECT format,
+       count(*) AS image_count,
+       sum(size) AS total_bytes
+FROM pixdb_images('/photos/**/*', ignore_errors = true)
+GROUP BY format
+ORDER BY image_count DESC;
 ```
 
+Metadata can also be persisted as a regular DuckDB table:
+
+```sql
+CREATE TABLE image_catalog AS
+SELECT *, current_timestamp AS indexed_at
+FROM pixdb_images('/photos/**/*', ignore_errors = true);
+```
+
+The scan has deterministic file ordering and projection pushdown. Empty globs produce no rows, exact missing paths produce useful errors, and `ignore_errors = true` skips malformed or unreadable inputs during batch scans. This first version intentionally supports local files only and inspects headers without decoding the complete pixel buffer.
+
+### Render an image as ASCII
+
+PixDB integrates [ascii-image-converter](https://github.com/TheZoraiz/ascii-image-converter) as a runtime renderer:
+
+```sql
+SET pixdb_ascii_width = 40;
+SET pixdb_ascii_complex = true;
+SET pixdb_ascii_negative = false;
+
+SELECT ascii_line
+FROM pixdb_ascii_lines('/photos/example.jpg');
+```
+
+The scalar `pixdb_ascii(path)` returns the complete rendering, while `pixdb_ascii_lines(path)` returns one row per line for clean terminal output. DuckDB settings control width, height, color, complexity, negative mode, dithering, background color, and the converter executable path.
+
+## 4. Design boundaries
+
+PixDB will not implement another general-purpose parser, transaction manager, buffer pool, catalog, or relational optimizer. New work should enter through DuckDB extension APIs and return regular DuckDB values, rows, or tables.
+
+The project remains responsible for the domain-specific questions:
+
+- How should image collections be discovered and catalogued?
+- Which visual features are inexpensive and deterministic enough to compute during a scan?
+- Which features should be materialized, cached, or computed lazily?
+- How should relational predicates narrow candidates before expensive inference or similarity search?
+- Where should model inference live, and how should its version and provenance be recorded?
+
+## 5. Revised roadmap
+
+- [x] **Extension foundation:** Buildable C++17 DuckDB extension with CI, tests, and pinned dependencies.
+- [x] **ASCII rendering:** Scalar and line-oriented SQL interfaces backed by configurable converter settings.
+- [x] **Image metadata queries:** Local glob discovery, signature detection, header metadata, error handling, and relational materialization.
+- [ ] **Deterministic visual features:** Brightness, contrast, entropy, blur, and compact color statistics.
+- [ ] **Catalog refresh semantics:** Detect changed or missing files and update materialized metadata safely.
+- [ ] **EXIF metadata:** Orientation, capture time, camera information, and optional spatial fields.
+- [ ] **Embeddings:** Versioned model inference with vectors stored in DuckDB.
+- [ ] **Similarity search:** Integrate DuckDB vector capabilities after the relational and feature-extraction paths are stable.
+
+## 6. Build and try it
+
+```sh
+git clone --recurse-submodules https://github.com/mhdihso/PixDB.git
+cd PixDB
+GEN=ninja make
+GEN=ninja make test
+./build/release/duckdb
+```
+
+The repository includes SQLLogicTests for supported formats, malformed files, empty globs, Unicode filenames, settings, and the ASCII converter boundary.
+
 ---
 
-## 4. Major Subsystems
-
-1. **Storage Engine (C):** File pager, buffer manager, binary page layout, metadata catalog, and slotted-page record management.
-2. **Feature Extraction Engine:** RGB/HSV color histograms, entropy, contrast, mean brightness, sharpness, noise levels, and EXIF metadata.
-3. **Computational Photography Operators:** Queryable indicators for blur detection (Laplacian variance), exposure quality, focus, and histogram distribution.
-4. **Computer Vision Module (Python/C FFI):** Object detection, face detection, OCR, and segmentation, computed at ingestion and stored as relational attributes.
-5. **CNN Vector Embeddings:** 768-dimensional feature vectors per image powering vector similarity search.
-6. **Vector Search Index:** Integrated HNSW/FAISS index powering `ORDER BY similarity(...)` clauses.
-7. **Query Executor & Optimizer:** Volcano iterator model (`SeqScan → Filter → Project → VectorSort`) with predicate pushdown and cost-based plan generation.
-
----
-
-## 5. Technology Stack & Dependencies
-
-| Layer                    | Choice & Rationale                                                             |
-| :----------------------- | :----------------------------------------------------------------------------- |
-| **DBMS Core**            | **C11 (GCC/Clang)** — Storage engine, pager, parser, optimizer, buffer manager |
-| **AI & Computer Vision** | **Python (PyTorch, OpenCV, ONNX Runtime)** — Deep learning feature extraction  |
-| **Vector Engine**        | **FAISS / HNSWlib** — High-performance vector index                            |
-| **API boundary**         | **FastAPI & Uvicorn** — query and execution-plan endpoints                     |
-| **Web console**          | **React + TypeScript** — SQL editor and query-plan visualizer                  |
-
----
-
-## 6. Implementation Roadmap
-
-- [x] **1. Storage pager and file format**
-      A C disk pager with fixed-schema rows and persistent filter scans across process restarts.
-- [/] **2. Header page and slotted-page layout** _(current)_
-  Variable-length storage for tags, detected labels, and vector arrays.
-- [ ] **3. Dynamic catalog system**
-      Runtime schema definitions that replace compile-time row layouts.
-- [ ] **4. SQL front end and parser**
-      A tokenizer and recursive-descent parser for image-aware SQL.
-- [ ] **5. Volcano execution engine**
-      An iterator pipeline using `open` → `next` → `close` operators.
-- [ ] **6. Predicate-pushdown optimizer**
-      Rules that apply inexpensive scalar filters before vector distance calculations.
-- [ ] **7. CV and vector integration**
-      OpenCV-derived features and an HNSW index connected to the query engine.
-- [ ] **8. Web console and plan visualizer**
-      A React interface for querying the system and inspecting execution plans.
-
----
-
-[[projects/pixdb|Go to Main PixDB Project Page →]]
+**[Explore PixDB on GitHub](https://github.com/mhdihso/PixDB)** · [[projects/pixdb|Go to the project overview →]]
