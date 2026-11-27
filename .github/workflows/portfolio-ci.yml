@@ -25,9 +25,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: node quartz/bootstrap-cli.mjs plugin install
       - run: npx tsc --noEmit
       - run: npm test
-      - run: node quartz/bootstrap-cli.mjs plugin install
       - run: node quartz/bootstrap-cli.mjs build
       - name: Verify lockfile is unchanged
         run: git diff --exit-code quartz.lock.json
