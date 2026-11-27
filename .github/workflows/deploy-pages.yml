@@ -26,8 +26,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: node quartz/bootstrap-cli.mjs plugin install --from-config
+      - run: node quartz/bootstrap-cli.mjs plugin install
+      - run: npm test
       - run: node quartz/bootstrap-cli.mjs build
+      - name: Verify lockfile is unchanged
+        run: git diff --exit-code quartz.lock.json
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

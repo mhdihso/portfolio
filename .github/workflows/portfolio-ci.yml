@@ -1,0 +1,35 @@
+name: Portfolio CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm test
+      - run: node quartz/bootstrap-cli.mjs plugin install
+      - run: node quartz/bootstrap-cli.mjs build
+      - name: Verify lockfile is unchanged
+        run: git diff --exit-code quartz.lock.json
+      - name: Check internal links and assets
+        run: node scripts/check-site.mjs public
