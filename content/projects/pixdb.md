@@ -6,8 +6,6 @@ modified: 2026-09-05
 tags: [project, ongoing, databases, duckdb, cpp, database-extension, vector-search, computer-vision]
 ---
 
-# PixDB — Image Analytics for DuckDB
-
 **Ongoing Systems Project · University of Tübingen · 2026 – Present**
 
 > **Status:** Working DuckDB extension — image metadata queries and ASCII rendering are implemented and tested.
@@ -97,4 +95,4 @@ DuckDB already provides a mature vectorized execution engine and a strong extens
 
 ---
 
-**[Explore the source code →](https://github.com/mhdihso/PixDB)** · [[blog/PixDB-Project-Plan|Read the architecture and roadmap →]] · [[projects/index|View all projects →]]
+**[Explore the source code →](https://github.com/mhdihso/PixDB)** · [[blog/pixdb-project-plan|Read the architecture and roadmap →]] · [[projects/index|View all projects →]]

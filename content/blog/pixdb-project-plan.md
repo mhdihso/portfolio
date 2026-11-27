@@ -7,8 +7,6 @@ tags: [blog, project, ongoing, databases, duckdb, cpp, computer-vision, vector-s
 draft: false
 ---
 
-# PixDB — From Standalone DBMS to DuckDB Extension
-
 > **Project status:** Active. PixDB is now a working DuckDB extension with image metadata queries and configurable ASCII rendering. The next stages will add visual features and, later, vector search. See the [[projects/pixdb|project overview]] or [source code](https://github.com/mhdihso/PixDB).
 
 ## 1. The architectural change

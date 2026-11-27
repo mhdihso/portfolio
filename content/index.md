@@ -4,7 +4,7 @@ description: Backend engineer and co-founder with 5+ years building production b
 ---
 
 <div class="profile-hero">
-  <img src="static/mehdi.jpg" alt="Mehdi Hosseini" class="profile-avatar" />
+  <img src="static/mehdi.jpg" alt="Portrait of Mehdi Hosseini" class="profile-avatar" width="400" height="529" fetchpriority="high" decoding="async" />
   <div class="profile-intro">
     <div class="profile-name">Mehdi Hosseini</div>
     <div class="hero-headline">Backend Engineer & Systems Builder</div>
@@ -101,11 +101,11 @@ description: Backend engineer and co-founder with 5+ years building production b
 
 ## Experience Snapshot
 
-| Where | Role | What |
-| :--- | :--- | :--- |
-| **Robert Bosch GmbH** | Working Student (Apr 2026–) | SQL pipelines, AI data workflows, enterprise web apps |
-| **Deutsche Bundesbank** | IT Intern (Jan–Mar 2025) | SQL validation for monetary policy IT systems |
-| **NoyanFanavarArya** | Co-Founder & Backend Lead (2019–2024) | APIs, databases, containers, full ownership |
+| Where                   | Role                                  | What                                                  |
+| :---------------------- | :------------------------------------ | :---------------------------------------------------- |
+| **Robert Bosch GmbH**   | Working Student (Apr 2026–)           | SQL pipelines, AI data workflows, enterprise web apps |
+| **Deutsche Bundesbank** | IT Intern (Jan–Mar 2025)              | SQL validation for monetary policy IT systems         |
+| **NoyanFanavarArya**    | Co-Founder & Backend Lead (2019–2024) | APIs, databases, containers, full ownership           |
 
 ---
 
