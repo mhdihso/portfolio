@@ -148,12 +148,15 @@ export const DefaultFrame: PageFrame = {
 
     return (
       <>
+        <a class="skip-link" href="#main-content">
+          Skip to main content
+        </a>
         <div class="left sidebar">
           {left.map((BodyComponent) => (
             <BodyComponent {...componentData} />
           ))}
         </div>
-        <div class="center">
+        <main class="center" id="main-content" tabIndex={-1}>
           <div class="page-header">
             <Header {...componentData}>
               {header.map((HeaderComponent) => (
@@ -199,12 +202,17 @@ export const DefaultFrame: PageFrame = {
               <div class="khayyam-grass-stage">
                 <svg id="khayyamGrassScene" viewBox="0 0 1200 70" preserveAspectRatio="none"></svg>
               </div>
-              <p class="khayyam-fa">این سبزه که امروز تماشاگه ماست <span>تا سبزهٔ خاک ما تماشاگه کیست</span></p>
-              <p class="khayyam-en">“This grass we watch today, so green, so near — whose watching-ground will rise from our own dust?” <span class="khayyam-credit">— Khayyám</span></p>
+              <p class="khayyam-fa">
+                این سبزه که امروز تماشاگه ماست <span>تا سبزهٔ خاک ما تماشاگه کیست</span>
+              </p>
+              <p class="khayyam-en">
+                “This grass we watch today, so green, so near — whose watching-ground will rise from
+                our own dust?” <span class="khayyam-credit">— Khayyám</span>
+              </p>
               <script dangerouslySetInnerHTML={{ __html: khayyamScript }} />
             </div>
           </div>
-        </div>
+        </main>
         <div class="right sidebar">
           {componentData.fileData.slug === "index" && <CareerTimeline {...componentData} />}
           {right.map((BodyComponent) => (

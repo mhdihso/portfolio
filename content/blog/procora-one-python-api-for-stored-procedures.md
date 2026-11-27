@@ -7,8 +7,6 @@ tags: [blog, project, backend, databases, python, sql-server, postgresql, mysql,
 draft: false
 ---
 
-# Procora — Designing One Python API for Stored Procedures
-
 > **Project status:** Procora 1.0 is a stable, typed Python library with real-database testing across SQL Server, PostgreSQL, and MySQL. See the [[projects/procora|project overview]] or [source code](https://github.com/mhdihso/procora).
 
 ## 1. What is Procora?

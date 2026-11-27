@@ -23,7 +23,10 @@ export const FullWidthFrame: PageFrame = {
   }: PageFrameProps) {
     return (
       <>
-        <div class="center full-width">
+        <a class="skip-link" href="#main-content">
+          Skip to main content
+        </a>
+        <main class="center full-width" id="main-content" tabIndex={-1}>
           <div class="page-header">
             <Header {...componentData}>
               {header.map((HeaderComponent) => (
@@ -43,7 +46,7 @@ export const FullWidthFrame: PageFrame = {
               <BodyComponent {...componentData} />
             ))}
           </div>
-        </div>
+        </main>
         <Footer {...componentData} />
       </>
     )

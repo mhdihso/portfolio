@@ -28,8 +28,16 @@ export default (() => {
     const iconPath = joinSegments(baseDir, "static/brand/astrolabe.svg")
 
     // Url of current page
+    const isHome = fileData.slug === "index"
+    const slugPath = (fileData.slug ?? "").replace(/\/index$/, "")
     const socialUrl =
-      fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
+      fileData.slug === "404"
+        ? url.toString()
+        : isHome
+          ? `${url.origin}/`
+          : joinSegments(url.toString(), slugPath)
+    const isPost = fileData.slug?.startsWith("blog/") === true && !fileData.slug.endsWith("/index")
+    const showPersonSchema = isHome || fileData.slug === "about/bio"
 
     const usesCustomOgImage = ctx.cfg.plugins.emitters.some(
       (e) => e.name === CustomOgImagesEmitterName,
@@ -62,9 +70,11 @@ export default (() => {
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <meta name="og:site_name" content={cfg.pageTitle}></meta>
+        <meta property="og:site_name" content={cfg.pageTitle}></meta>
+        <meta name="theme-color" content="#062f38" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#f8efd9" media="(prefers-color-scheme: light)" />
         <meta property="og:title" content={title} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={isPost ? "article" : "website"} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
@@ -86,6 +96,13 @@ export default (() => {
         {cfg.baseUrl && (
           <>
             <meta property="twitter:domain" content={cfg.baseUrl}></meta>
+            <link rel="canonical" href={socialUrl} />
+            <link
+              rel="alternate"
+              type="application/rss+xml"
+              title={`${cfg.pageTitle} RSS`}
+              href={`${url.origin}/index.xml`}
+            />
             <meta property="og:url" content={socialUrl}></meta>
             <meta property="twitter:url" content={socialUrl}></meta>
           </>
@@ -94,47 +111,46 @@ export default (() => {
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Mehdi Hosseini",
-              "url": `https://${cfg.baseUrl ?? "mhdihso.github.io"}`,
-              "jobTitle": "Backend & Database Systems Engineer",
-              "worksFor": {
-                "@type": "Organization",
-                "name": "Robert Bosch GmbH",
-              },
-              "alumniOf": [
-                {
-                  "@type": "EducationalOrganization",
-                  "name": "University of Tübingen",
+        {showPersonSchema && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Mehdi Hosseini",
+                url: `https://${cfg.baseUrl ?? "mhdihso.github.io"}`,
+                jobTitle: "Backend & Database Systems Engineer",
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Robert Bosch GmbH",
                 },
-                {
-                  "@type": "EducationalOrganization",
-                  "name": "University of Zanjan",
-                },
-              ],
-              "sameAs": [
-                "https://github.com/mhdihso",
-                "https://www.linkedin.com/in/mehdi-hoseyni",
-              ],
-              "knowsAbout": [
-                "Database Engine Internals",
-                "Query Optimization",
-                "DuckDB",
-                "PostgreSQL",
-                "Python",
-                "Django",
-                "FastAPI",
-                "Distributed Systems",
-                "Information Retrieval",
-              ],
-            }),
-          }}
-        />
+                alumniOf: [
+                  {
+                    "@type": "EducationalOrganization",
+                    name: "University of Tübingen",
+                  },
+                  {
+                    "@type": "EducationalOrganization",
+                    name: "University of Zanjan",
+                  },
+                ],
+                sameAs: ["https://github.com/mhdihso", "https://www.linkedin.com/in/mehdi-hoseyni"],
+                knowsAbout: [
+                  "Database Engine Internals",
+                  "Query Optimization",
+                  "DuckDB",
+                  "PostgreSQL",
+                  "Python",
+                  "Django",
+                  "FastAPI",
+                  "Distributed Systems",
+                  "Information Retrieval",
+                ],
+              }),
+            }}
+          />
+        )}
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js
