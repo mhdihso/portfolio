@@ -63,12 +63,12 @@ description: Backend engineer and co-founder with 5+ years building production b
 
 <div class="skill-card">
 <div class="skill-card-icon">📡</div>
-<h3 class="skill-card-title">Distributed Systems</h3>
+<h3 class="skill-card-title">Distributed Systems & AI Tooling</h3>
 <ul class="skill-card-list">
 <li>Apache Kafka — event streaming (hands-on)</li>
 <li>Load balancing fundamentals</li>
 <li>Service decomposition & async design</li>
-<li>Observability and logging practices</li>
+<li>MCP servers & typed tools for AI agents</li>
 </ul>
 </div>
 
@@ -76,10 +76,10 @@ description: Backend engineer and co-founder with 5+ years building production b
 <div class="skill-card-icon">🔬</div>
 <h3 class="skill-card-title">Research & Systems Projects</h3>
 <ul class="skill-card-list">
+<li>Lectio Lab — MCP integration for ILIAS</li>
+<li>Procora — stored procedures across 3 DBMSs</li>
 <li>PixDB — image analytics extension for DuckDB</li>
 <li>DuckDB — recursive query research</li>
-<li>Information retrieval & search ranking</li>
-<li>AI-driven data pipelines (Bosch)</li>
 </ul>
 </div>
 
@@ -113,6 +113,9 @@ description: Backend engineer and co-founder with 5+ years building production b
 
 - [[about/bio|Full Profile →]]
 - [[experience/index|Work Experience & Systems Projects →]]
+- [[projects/index|All Projects →]]
+- [[projects/lectio-lab|Lectio Lab — ILIAS for AI Agents →]]
 - [[projects/pixdb|PixDB DuckDB Extension →]]
 - [[projects/duckdb-recursive-features|DuckDB Research →]]
+- [[blog/index|Blog →]]
 - [[connect/index|Contact & CV →]]

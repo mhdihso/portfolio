@@ -26,7 +26,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: node quartz/bootstrap-cli.mjs plugin install --from-config
+      - run: node quartz/bootstrap-cli.mjs plugin install
       - run: node quartz/bootstrap-cli.mjs build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
