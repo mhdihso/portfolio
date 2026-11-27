@@ -37,5 +37,8 @@ Five years of co-founder engineering means no one else cleans up your mistakes. 
 
 This is different from being a developer inside a large engineering team. The breadth of ownership — from database schema design to server administration to API contracts — is what this experience represents.
 
+### Open-source pieces from this period
+Some small libraries from client work were published openly: an OpenCV answer-sheet scanner, Persian-language utilities, and a Django social-media automation service. See [[projects/early-open-source|Early Open Source (2021–2023) →]]
+
 ### Stack
 `Python` · `Django` · `FastAPI` · `PostgreSQL` · `MongoDB` · `Redis` · `Docker` · `Docker Swarm` · `Apache Kafka` · `Linux` · `REST APIs` · `Git` · `CI/CD`

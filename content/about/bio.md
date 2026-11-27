@@ -13,7 +13,7 @@ I designed REST APIs, managed relational and non-relational databases in product
 
 My current work at **Robert Bosch GmbH** puts me in a real production environment at one of the world's largest industrial companies, working on SQL-driven quality management systems. My time at **Deutsche Bundesbank** gave me exposure to the kind of institution where data correctness is non-negotiable.
 
-I am now deepening my theoretical and systems foundations through my Master's degree — currently researching recursive query execution in DuckDB and working on AI and information retrieval projects.
+I am now deepening my theoretical and systems foundations through my Master's degree. Alongside it I build open-source systems: [[projects/lectio-lab|Lectio Lab]], an MCP integration that lets instructors work with ILIAS through their AI agent; [[projects/procora|Procora]], a typed Python library for stored procedures across SQL Server, PostgreSQL, and MySQL; and [[projects/pixdb|PixDB]], an image-analytics extension for DuckDB.
 
 ---
 
@@ -31,6 +31,8 @@ I am now deepening my theoretical and systems foundations through my Master's de
 | **APIs** | RESTful design, multiple client integrations |
 | **JavaScript / Java** | Secondary languages — used where needed |
 | **Enterprise Tools** | OutSystems (Bosch), data validation pipelines |
+| **AI Agent Tooling** | MCP servers (TypeScript) with a Python backend — Lectio Lab |
+| **Data & ML** | Pandas, scikit-learn, Keras, OpenCV, MNE, Streamlit dashboards |
 | **Research** | DuckDB recursive queries, information retrieval systems |
 
 ---
@@ -84,8 +86,10 @@ Three months, honest scope. But the institutional context matters: these are sys
 
 - Focus: scalable systems, databases, AI systems
 - **Ongoing Systems Project:** [[projects/pixdb|PixDB]] — C++ DuckDB extension for image metadata, visual features, ASCII rendering, and future vector similarity search
-- **Seminar:** Recursive features and execution models in DuckDB
+- **Seminar:** Recursive features and execution models in DuckDB — [[projects/duckdb-recursive-features|Distance-Vector Routing with USING KEY]]
 - **Project:** AI and search systems — information retrieval, ranking, search backend design
+- **Data Literacy:** [[projects/data-literacy-eeg|EEG study]] on household food insecurity and attention markers, with a Streamlit dashboard
+- **Interaction Techniques:** [[projects/interaction-techniques|sensor, audio and vision prototypes]], including a MatchPoint (UIST 2017) replication
 - Why Tübingen: strong CS and data science faculty; one of Germany's research universities
 
 ### B.Sc. Computer Science · University of Zanjan · Graduated 2024
@@ -113,4 +117,4 @@ I am happy to be challenged on algorithms, system design, and database internals
 
 ---
 
-[[experience/index|Full Experience & Systems Projects →]] · [[projects/pixdb|PixDB DuckDB Extension →]] · [[connect/index|Contact & CV →]]
+[[experience/index|Full Experience & Systems Projects →]] · [[projects/index|All Projects →]] · [[connect/index|Contact & CV →]]
